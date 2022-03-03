@@ -1,10 +1,12 @@
 import Traveler from './Traveler'
 
-class TravelerRepository {
+class TravelRepository {
   constructor(data){
-    this.travelers = data.travelers;
+    this.travelers = data.travelerData;
     this.currentTraveler = '';
-    this.trips = data.trips;
-    this.destinations = data.destinations;
+    this.trips = data.tripsData;
+    this.destinations = data.destinationData;
   }
 }
+
+export default TravelRepository;
