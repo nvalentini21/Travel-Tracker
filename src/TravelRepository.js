@@ -2,10 +2,10 @@ import Traveler from './Traveler'
 
 class TravelRepository {
   constructor(data){
-    this.travelers = data.travelerData;
+    this.travelers = data.allTravelerData;
     this.currentTraveler = '';
-    this.trips = data.tripsData;
-    this.destinations = data.destinationData;
+    this.trips = data.allTripsData;
+    this.destinations = data.allDestinationData;
   }
 }
 

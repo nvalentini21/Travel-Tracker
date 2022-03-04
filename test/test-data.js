@@ -1,4 +1,4 @@
-allData = {
+const allData = {
   allTravelerData: [
 {
 "id": 1,
