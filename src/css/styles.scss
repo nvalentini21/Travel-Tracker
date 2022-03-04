@@ -33,7 +33,7 @@ flex-direction: column;
 
 .main-section {
   height: 100%;
-  width: 90%;
+  width: 100%;
   background-color: aqua;
 
 }
@@ -45,6 +45,11 @@ flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+.travel-form {
+  justify-content: space-between;
+  width: 100%;
 }
 
 .trips-section {
