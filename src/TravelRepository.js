@@ -7,6 +7,12 @@ class TravelRepository {
     this.trips = data.allTripsData;
     this.destinations = data.allDestinationData;
   }
+
+   createNewTraveler(id) {
+     const travelerData = this.travelers.find(traveler => traveler.id === id)
+     const tripsData = this.trips.filter(trip => trip.userID === id)
+     const newTraveler = new Traveler(travelerData, tripsData, destinationData)
+   }
 }
 
 export default TravelRepository;
