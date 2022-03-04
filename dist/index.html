@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<nav class="nav-bar" id="navBar">
-  <h1>Travel Tracker</h1>
-  <h2>Welcome Nicole!</h2>
-  <p class="welcome-tag" id="welcomeTag">Today's Date</p>
-</nav>
-<body class=main-section>
-  <section class="form-section">
-    <form class="travel-form">Travel Form
-    </form>
-  </section>
-  <section class="trips-section">
-    <article class=" trips past-trips"> Past Trips</article>
-    <article class=" trips present-trips">Present Trips</article>
-    <article class="trips future-trips">Future Trips</article>
-    <article class="trips past-trips">Pending Trips</article>
-  </section>
-  <script src="bundle.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpack Starter Kit</title>
+  </head>
+  <body class=main-section>
+    <nav class="nav-bar" id="navBar">
+      <h1>Travel Tracker</h1>
+      <h2>Welcome Nicole!</h2>
+      <p class="welcome-tag" id="welcomeTag">Today's Date</p>
+    </nav>
+    <section class="form-section">
+      <form class="travel-form">Travel Form
+        <label for="date">Date</label>
+        <input  class="travel-input" type="date" name="date" id="activityDate" required></input>
+        <label for="destination">Destination:</label>
+        <input class="travel-input" type="text" name="destination" id="destination" min="0" required></input>
+        <label for="minutesActive">Number of Days</label>
+        <input class="travel-input" type="number" name="numberOfDays" id="numberOfDays" min="0" required></input>
+        <label for="flightsOfStairs">Travelers</label>
+        <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" required></input>
+        <button class="button" type="submit-travel-request" id="submitTravelRequest">Submit</button>
+      </form>
+    </section>
+    <section class="trips-section">
+      <article class=" trips past-trips"> Past Trips</article>
+      <article class=" trips present-trips">Present Trips</article>
+      <article class="trips future-trips">Future Trips</article>
+      <article class="trips past-trips">Pending Trips</article>
+    </section>
+    <script src="bundle.js"></script>
+  </body>
 </html>
 
 
