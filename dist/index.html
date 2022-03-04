@@ -6,11 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webpack Starter Kit</title>
 </head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+<nav class="nav-bar" id="navBar">
+  <h1>Travel Tracker</h1>
+  <h2>Welcome Nicole!</h2>
+  <p class="welcome-tag" id="welcomeTag">Today's Date</p>
+</nav>
+<body class=main-section>
+  <section class="form-section">
+    <form class="travel-form">Travel Form
+    </form>
+  </section>
+  <section class="trips-section">
+    <article class=" trips past-trips"> Past Trips</article>
+    <article class=" trips present-trips">Present Trips</article>
+    <article class="trips future-trips">Future Trips</article>
+    <article class="trips past-trips">Pending Trips</article>
+  </section>
   <script src="bundle.js"></script>
-
 </body>
 </html>
+
+
+
+<!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
