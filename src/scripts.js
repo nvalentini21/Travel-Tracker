@@ -5,6 +5,7 @@
 // import './css/base.scss';
 import './css/styles.scss';
 import TravelRepository from './TravelRepository'
+import Trip from './Trip'
 import fetchCalls from './apiCalls';
 import domUpdates from './domUpdates';
 
@@ -43,16 +44,16 @@ const loadPage = () => {
     const travelRepository = new TravelRepository(allData)
     travelRepository.createNewTraveler(5)
     instantiateTripData(travelRepository)
+    // instantiateDestinationData(travelRepository)
   })
 }
 
 //Trips-----------------------------------------------------------------------------------------
 
 const instantiateTripData = (travelRepo) => {
-  const tripInstantiations = travelRepo.currentTraveler.instantiateTrips()
+  const tripInstantiations = travelRepo.currentTraveler.instantiateTrips(travelRepo)
   return tripInstantiations
 }
-
 
 //Traveler-----------------------------------------------------------------------------------
 

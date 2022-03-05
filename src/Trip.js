@@ -13,6 +13,12 @@ class Trip {
     this.destinationID = travelerData.destinationID;
     this.destinationData = ''
   }
-}
+
+  instantiateDestinations(travelRepo) {
+    const destinationData = travelRepo.destinations.find(location => location.id === this.destinationID)
+    const newDestination = new Destination(destinationData)
+    this.destinationData = newDestination
+  }
+};
 
 export default Trip;
