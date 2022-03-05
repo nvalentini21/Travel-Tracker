@@ -36,20 +36,26 @@ const returnPromise = () => {
 
 
 
-
 // Functions -----------------------------------------------------------------------------
 
 const loadPage = () => {
   returnPromise().then(allData => {
     const travelRepository = new TravelRepository(allData)
     travelRepository.createNewTraveler(5)
+    instantiateTripData(travelRepository)
   })
+}
+
+//Trips-----------------------------------------------------------------------------------------
+
+const instantiateTripData = (travelRepo) => {
+  const tripInstantiations = travelRepo.currentTraveler.instantiateTrips()
+  return tripInstantiations
 }
 
 
 //Traveler-----------------------------------------------------------------------------------
 
-//Trips-----------------------------------------------------------------------------------------
 
 //Destinations---------------------------------------------------------------------------------------
 

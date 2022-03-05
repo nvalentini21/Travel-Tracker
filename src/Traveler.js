@@ -12,6 +12,15 @@ class Traveler {
     this.pendingTrips = [];
     this.totalSpent = 0;
   }
+
+  instantiateTrips() {
+    const instantiatedTrips = this.allTrips.map(trip => {
+      const newTrip = new Trip(trip)
+      return newTrip
+    })
+    this.allTrips = instantiatedTrips;
+    console.log(this.allTrips)
+  }
 }
 
 export default Traveler;
