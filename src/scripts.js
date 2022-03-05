@@ -16,9 +16,6 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 //Query Selectors -----------------------------------------------------------------------------
 
-//Event Listeners -----------------------------------------------------------------------------
-
-window.addEventListener('load', loadPage)
 // API handling -----------------------------------------------------------------------------
 
 
@@ -32,7 +29,6 @@ const returnPromise = () => {
     allData.allTravelerData = data[0].travelers;
     allData.allTripData = data[1].trips;
     allData.allDestinationData = data[2].destinations;
-    console.log(allData)
     return allData;
   });
 };
@@ -45,32 +41,18 @@ const returnPromise = () => {
 
 const loadPage = () => {
   returnPromise().then(allData => {
-    const travelerRepository = new TravelRepository(allData)
-    createNewTraveler(5)
+    const travelRepository = new TravelRepository(allData)
+    travelRepository.createNewTraveler(5)
   })
 }
 
 
-
-
-
-
-
-
 //Traveler-----------------------------------------------------------------------------------
-
-
-
-
-
-
-
 
 //Trips-----------------------------------------------------------------------------------------
 
-
-
-
-
-
 //Destinations---------------------------------------------------------------------------------------
+
+//Event Listeners -----------------------------------------------------------------------------
+
+window.addEventListener('load', loadPage)
