@@ -42,9 +42,8 @@ const returnPromise = () => {
 const loadPage = () => {
   returnPromise().then(allData => {
     const travelRepository = new TravelRepository(allData)
-    travelRepository.createNewTraveler(5)
+    travelRepository.createNewTraveler(44)
     instantiateTripData(travelRepository)
-    // instantiateDestinationData(travelRepository)
   })
 }
 

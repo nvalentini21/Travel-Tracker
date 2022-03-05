@@ -16,13 +16,14 @@ class Traveler {
   instantiateTrips(travelRepo) {
     const instantiatedTrips = this.allTrips.map(trip => {
       const newTrip = new Trip(trip)
-      newTrip.instantiateDestinations(travelRepo)
+      newTrip.instantiateDestination(travelRepo)
+      newTrip.calcTotalCost()
       return newTrip
     })
     this.allTrips = instantiatedTrips;
     console.log(this.allTrips)
   }
-}
+};
 
 
 export default Traveler;
