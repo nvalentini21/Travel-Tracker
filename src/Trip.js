@@ -14,3 +14,5 @@ class Trip {
     this.destinationData = ''
   }
 }
+
+export default Trip;
