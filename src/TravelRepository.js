@@ -11,7 +11,8 @@ class TravelRepository {
    createNewTraveler(id) {
      const travelerData = this.travelers.find(traveler => traveler.id === id)
      const tripsData = this.trips.filter(trip => trip.userID === id)
-     const newTraveler = new Traveler(travelerData, tripsData, destinationData)
+     const newTraveler = new Traveler(travelerData, tripsData)
+     this.currentTraveler = newTraveler;
    }
 }
 
