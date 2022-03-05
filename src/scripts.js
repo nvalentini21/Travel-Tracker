@@ -6,6 +6,8 @@
 import './css/styles.scss';
 import TravelRepository from './TravelRepository'
 import fetchCalls from './apiCalls';
+import domUpdates from './domUpdates';
+
 // import domUpdates from '.domUpdates';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -13,8 +15,6 @@ import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 //Query Selectors -----------------------------------------------------------------------------
-
-//Event Listeners -----------------------------------------------------------------------------
 
 // API handling -----------------------------------------------------------------------------
 
@@ -29,7 +29,6 @@ const returnPromise = () => {
     allData.allTravelerData = data[0].travelers;
     allData.allTripData = data[1].trips;
     allData.allDestinationData = data[2].destinations;
-    console.log(allData)
     return allData;
   });
 };
@@ -42,32 +41,18 @@ const returnPromise = () => {
 
 const loadPage = () => {
   returnPromise().then(allData => {
-    const travelerRepository = new TravelRepository(allData)
+    const travelRepository = new TravelRepository(allData)
+    travelRepository.createNewTraveler(5)
   })
 }
-
-loadPage()
-
-
-
-
-
 
 
 //Traveler-----------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
 //Trips-----------------------------------------------------------------------------------------
 
-
-
-
-
-
 //Destinations---------------------------------------------------------------------------------------
+
+//Event Listeners -----------------------------------------------------------------------------
+
+window.addEventListener('load', loadPage)
