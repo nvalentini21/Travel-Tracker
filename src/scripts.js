@@ -44,6 +44,7 @@ const loadPage = () => {
     const travelRepository = new TravelRepository(allData)
     travelRepository.createNewTraveler(44)
     instantiateTripData(travelRepository)
+    travelRepository.currentTraveler.calculateAnnualTotal()
   })
 }
 

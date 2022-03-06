@@ -23,6 +23,21 @@ class Traveler {
     this.allTrips = instantiatedTrips;
     console.log(this.allTrips)
   }
+
+  calculateAnnualTotal() {
+    const total = this.allTrips.reduce((sum, trip) => {
+      sum += trip.cost
+      return sum
+    }, 0)
+    console.log(total)
+    return total
+  }
+
+  sortTripsPast() {
+    const pastTrips = this.allTrips.forEach(trip => {
+      //compare dates, if less than present push to pastTrips array. 
+    })
+  }
 };
 
 
