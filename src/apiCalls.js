@@ -7,10 +7,10 @@ const fetchCalls = {
       .catch(err => handleApiErrors(err))
   },
 
-  postData: function (url, someData) {
+  postData: function (url, dataObject) {
   fetch (url, {
     method: 'POST',
-    body: JSON.stringify(someData),
+    body: JSON.stringify(dataObject),
     headers:{
       'Content-Type': 'application/json'
       }

@@ -15,7 +15,6 @@ import './images/turing-logo.png'
 
 
 console.log('This is the JavaScript entry file - your code begins here.');
-//Query Selectors -----------------------------------------------------------------------------
 
 // API handling -----------------------------------------------------------------------------
 
@@ -35,13 +34,13 @@ const returnPromise = () => {
 };
 
 
-
+let travelRepository = ''
 
 // Functions -----------------------------------------------------------------------------
 
 const loadPage = () => {
   returnPromise().then(allData => {
-    const travelRepository = new TravelRepository(allData)
+    travelRepository = new TravelRepository(allData)
     travelRepository.createNewTraveler(38)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
@@ -68,16 +67,56 @@ const sortTravelerTripData = (travelRepo) => {
   travelRepo.currentTraveler.sortTripsFuture()
   travelRepo.currentTraveler.sortTripsPending()
 }
+
+const getDestinationID = (travelRepo) => {
+  const iD = travelRepo.destinations.find(location => {
+    if (location.destination == destinationInput.value) {
+      return location
+    }
+  })
+  console.log('DESTINATION ID', iD.id)
+  return iD.id
+}
+
+const createTripObject = () => {
+  const newTravelRequest = {
+    id: travelRepository.trips.length + 1,
+    userID: travelRepository.currentTraveler.id,
+    destinationID: getDestinationID(travelRepository),
+    travelers: numTravelersInput.value,
+    date: dateInput.value.split('-').join('/'),
+    duration: durationInput.value,
+    status: 'pending',
+    suggestedActivities: []
+  }
+  return newTravelRequest;
+}
+
+const postTripRequest = (e, travelRepo) => {
+  e.preventDefault()
+  createTripObject(travelRepo)
+  fetchCalls.postData('http://localhost:3001/api/v1/trips', createTripObject());
+}
 //Traveler-----------------------------------------------------------------------------------
 
 const calculateAnnualCost = (travelRepo) => {
   travelRepo.currentTraveler.calculateAnnualTotal()
 }
 
-//Destinations---------------------------------------------------------------------------------------
+//Query Selectors -----------------------------------------------------------------------------
+
+const travelForm = document.getElementById('travelForm');
+const dateInput = document.getElementById('dateInput');
+const destinationInput = document.getElementById('destinationInput');
+const durationInput = document.getElementById('numberOfDays');
+const numTravelersInput = document.getElementById('numberOfTravelers');
+const submitButton = document.getElementById('submitTravelRequest');
 
 //Event Listeners -----------------------------------------------------------------------------
 
 window.addEventListener('load', loadPage)
+travelForm.addEventListener('submit', function (e) {
+  postTripRequest(e)
+})
 
 export default handleApiErrors;
