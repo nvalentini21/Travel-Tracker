@@ -5,6 +5,7 @@
 // import './css/base.scss';
 import './css/styles.scss';
 import TravelRepository from './TravelRepository'
+import Trip from './Trip'
 import fetchCalls from './apiCalls';
 import domUpdates from './domUpdates';
 
@@ -36,20 +37,36 @@ const returnPromise = () => {
 
 
 
-
 // Functions -----------------------------------------------------------------------------
 
 const loadPage = () => {
   returnPromise().then(allData => {
     const travelRepository = new TravelRepository(allData)
-    travelRepository.createNewTraveler(5)
+    travelRepository.createNewTraveler(38)
+    instantiateTripData(travelRepository)
+    calculateAnnualCost(travelRepository)
+    sortTravelerTripData(travelRepository)
   })
 }
 
 
+//Trips-----------------------------------------------------------------------------------------
+
+const instantiateTripData = (travelRepo) => {
+  const tripInstantiations = travelRepo.currentTraveler.instantiateTrips(travelRepo)
+  return tripInstantiations
+}
+
+const sortTravelerTripData = (travelRepo) => {
+  travelRepo.currentTraveler.sortTripsPast()
+  travelRepo.currentTraveler.sortTripsFuture()
+  travelRepo.currentTraveler.sortTripsPending()
+}
 //Traveler-----------------------------------------------------------------------------------
 
-//Trips-----------------------------------------------------------------------------------------
+const calculateAnnualCost = (travelRepo) => {
+  travelRepo.currentTraveler.calculateAnnualTotal()
+}
 
 //Destinations---------------------------------------------------------------------------------------
 
