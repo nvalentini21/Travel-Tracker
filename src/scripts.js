@@ -112,16 +112,17 @@ const calculateAnnualCost = (travelRepo) => {
 //DOM Updates ----------------------------------------------------------------------------------
 
 const populateTravelerProfile = (travelRepo) => {
-  annualTotalSpent.innerText = `Total Spent this year: $ ${travelRepo.currentTraveler.totalSpent}`
+  annualTotalSpent.innerText = `You've spent $${travelRepo.currentTraveler.totalSpent} in 2022 so far.`
 }
 
 const populatePastTrips = (travelRepo) => {
   travelRepo.currentTraveler.pastTrips.forEach(trip => {
-    pastTripsGrid.innerHTML += `  <div class="trip-card">
+    pastTripsGrid.innerHTML += ``
+    pastTripsGrid.innerHTML += `<div class="trip-card">
         <h4>${trip.destinationData.destination}</h4>
         <p>Date Travelled: ${trip.date.toString()} </p>
         <p> Cost: $ ${trip.cost} </p>
-        <img src="${trip.destinationData.image}" alt="${trip.destinationData.alt}" style="width:100px;height:150px;"</img>
+        <img src="${trip.destinationData.image}" alt="${trip.destinationData.alt}" style="width:100px;height:auto;"</img>
       </div>`
   })
 
