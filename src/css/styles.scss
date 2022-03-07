@@ -1,14 +1,13 @@
 
 
 * {
-  padding: 0px;
   margin: 0px;
   font-family: sans-serif;
   font-weight: lighter;
 }
 
 html {
-  height: 2000;
+  height: 2000px;
 }
 
 nav {
@@ -95,7 +94,7 @@ body {
   height: 25%;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(50, 1fr);
   overflow: auto;
   grid-gap: 20px;
   padding: 20px;

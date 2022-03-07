@@ -43,7 +43,7 @@ let travelRepository = null
 const loadPage = () => {
   fetchData().then(allData => {
     travelRepository = new TravelRepository(allData)
-    travelRepository.createNewTraveler(38)
+    travelRepository.createNewTraveler(9)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
