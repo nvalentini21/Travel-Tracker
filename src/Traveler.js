@@ -26,8 +26,12 @@ class Traveler {
 
   calculateAnnualTotal() {
     const total = this.allTrips.reduce((sum, trip) => {
-      sum += trip.cost
-      return (sum + sum * .90)
+      const today = new Date()
+      const date = new Date(trip.date)
+      if(date.getFullYear() === today.getFullYear()){
+        sum += trip.cost  
+      }
+      return (sum + (sum * .10))
     }, 0)
     const rounded = total.toFixed(2)
     this.totalSpent = rounded;
