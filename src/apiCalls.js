@@ -1,3 +1,5 @@
+import handleApiErrors from './scripts'
+
 const fetchCalls = {
   fetchData: function (path) {
     return fetch(`http://localhost:3001/api/v1/${path}`)
@@ -5,7 +7,7 @@ const fetchCalls = {
       .catch(err => handleApiErrors(err))
   },
 
-postData: function (url, someData) {
+  postData: function (url, someData) {
   fetch (url, {
     method: 'POST',
     body: JSON.stringify(someData),

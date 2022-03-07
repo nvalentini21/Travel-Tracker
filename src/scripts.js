@@ -49,6 +49,12 @@ const loadPage = () => {
   })
 }
 
+const  handleApiErrors = (error) => {
+  if (error.message === 'Failed to fetch'){
+    window.alert("Ooops! Something went wrong. Please retry.");
+  };
+};
+
 
 //Trips-----------------------------------------------------------------------------------------
 
@@ -73,3 +79,5 @@ const calculateAnnualCost = (travelRepo) => {
 //Event Listeners -----------------------------------------------------------------------------
 
 window.addEventListener('load', loadPage)
+
+export default handleApiErrors;
