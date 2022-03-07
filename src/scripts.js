@@ -19,7 +19,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 // API handling -----------------------------------------------------------------------------
 
 
-const returnPromise = () => {
+const fetchData = () => {
   const allTravelerData = fetchCalls.fetchData('travelers');
   const allTripData = fetchCalls.fetchData('trips');
   const allDestinationData = fetchCalls.fetchData('destinations');
@@ -34,12 +34,12 @@ const returnPromise = () => {
 };
 
 
-let travelRepository = ''
+let travelRepository = null
 
 // Functions -----------------------------------------------------------------------------
 
 const loadPage = () => {
-  returnPromise().then(allData => {
+  fetchData().then(allData => {
     travelRepository = new TravelRepository(allData)
     travelRepository.createNewTraveler(38)
     instantiateTripData(travelRepository)
@@ -94,8 +94,9 @@ const createTripObject = () => {
 
 const postTripRequest = (e) => {
   e.preventDefault()
-  createTripObject()
-  fetchCalls.postData('http://localhost:3001/api/v1/trips', createTripObject());
+  const obj = createTripObject()
+  fetchCalls.postData('http://localhost:3001/api/v1/trips', obj)
+  // .then(() => loadPage())
 
   setTimeout (loadPage, 3000)
 }
