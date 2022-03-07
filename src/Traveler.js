@@ -45,7 +45,7 @@ class Traveler {
     })
     console.log(`PAST`, this.pastTrips)
   }
-
+  //
   // sortTripsPresent() {
   //   const presentTrips = this.allTrips.forEach(trip => {
   //     const date = new Date(trip.date)
@@ -56,6 +56,7 @@ class Traveler {
   //   })
   //   console.log(this.presentTrips)
   // }
+  //
 
   sortTripsFuture() {
     const futureTrips = this.allTrips.forEach(trip => {
