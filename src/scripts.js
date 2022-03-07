@@ -116,13 +116,12 @@ const populateTravelerProfile = (travelRepo) => {
 }
 
 const populatePastTrips = (travelRepo) => {
+  pastTripsGrid.innerHTML = '';
   travelRepo.currentTraveler.pastTrips.forEach(trip => {
-    pastTripsGrid.innerHTML += ``
     pastTripsGrid.innerHTML += `<div class="trip-card">
-        <h4>${trip.destinationData.destination}</h4>
-        <p>Date Travelled: ${trip.date.toString()} </p>
-        <p> Cost: $ ${trip.cost} </p>
-        <img src="${trip.destinationData.image}" alt="${trip.destinationData.alt}" style="width:100px;height:auto;"</img>
+        <h4 class="card-title">${trip.destinationData.destination}</h4>
+        <img src="${trip.destinationData.image}" alt="${trip.destinationData.alt}" style="width:200px;height:auto;"</img>
+        <p class="card-year">${trip.date.getFullYear()} </p>
       </div>`
   })
 
