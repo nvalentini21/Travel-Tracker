@@ -47,6 +47,7 @@ const loadPage = () => {
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
+    populateTravelerProfile(travelRepository)
   })
 }
 
@@ -107,6 +108,13 @@ const calculateAnnualCost = (travelRepo) => {
   travelRepo.currentTraveler.calculateAnnualTotal()
 }
 
+//DOM Updates ----------------------------------------------------------------------------------
+
+const populateTravelerProfile = (travelRepo) => {
+  annualTotalSpent.innerText = `Total Spent this year: $ ${travelRepo.currentTraveler.totalSpent}`
+}
+
+
 //Query Selectors -----------------------------------------------------------------------------
 
 const travelForm = document.getElementById('travelForm');
@@ -115,6 +123,7 @@ const destinationInput = document.getElementById('destinationInput');
 const durationInput = document.getElementById('numberOfDays');
 const numTravelersInput = document.getElementById('numberOfTravelers');
 const submitButton = document.getElementById('submitTravelRequest');
+const annualTotalSpent = document.getElementById('annualTotal');
 
 //Event Listeners -----------------------------------------------------------------------------
 

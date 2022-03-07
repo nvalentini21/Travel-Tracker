@@ -30,6 +30,7 @@ class Traveler {
       return (sum + sum * .90)
     }, 0)
     const rounded = total.toFixed(2)
+    this.totalSpent = rounded;
     console.log(rounded)
     return rounded
   }

@@ -1,8 +1,7 @@
 let domUpdates ={
-updateTravelerProfile: => (user, data) {
-  totalSpent = 
+updateTravelerProfile: (traveler) => {
+  annualTotalSpent.innerText = ` $${traveler.totalSpent}`
 }
-
 }
 
 export default domUpdates;
