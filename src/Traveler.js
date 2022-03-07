@@ -26,10 +26,15 @@ class Traveler {
 
   calculateAnnualTotal() {
     const total = this.allTrips.reduce((sum, trip) => {
-      sum += trip.cost
-      return (sum + sum * .90)
+      const today = new Date()
+      const date = new Date(trip.date)
+      if(date.getFullYear() === today.getFullYear()){
+        sum += trip.cost  
+      }
+      return (sum + (sum * .10))
     }, 0)
     const rounded = total.toFixed(2)
+    this.totalSpent = rounded;
     console.log(rounded)
     return rounded
   }
@@ -39,7 +44,7 @@ class Traveler {
       const date = new Date(trip.date)
       trip.date = date
       const today = new Date()
-      if (date < today){
+      if (date < today && trip.status === 'approved'){
         this.pastTrips.push(trip)
       }
     })

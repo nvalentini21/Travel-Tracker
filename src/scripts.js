@@ -33,6 +33,8 @@ const fetchData = () => {
   });
 };
 
+const date1= new Date()
+const date2 = new Date()
 
 let travelRepository = null
 
@@ -41,10 +43,12 @@ let travelRepository = null
 const loadPage = () => {
   fetchData().then(allData => {
     travelRepository = new TravelRepository(allData)
-    travelRepository.createNewTraveler(38)
+    travelRepository.createNewTraveler(9)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
+    populateTravelerProfile(travelRepository)
+    populatePastTrips(travelRepository)
   })
 }
 
@@ -74,7 +78,6 @@ const getDestinationID = (travelRepo) => {
       return location
     }
   })
-  console.log('DESTINATION ID', iD.id)
   return iD.id
 }
 
@@ -106,6 +109,25 @@ const calculateAnnualCost = (travelRepo) => {
   travelRepo.currentTraveler.calculateAnnualTotal()
 }
 
+//DOM Updates ----------------------------------------------------------------------------------
+
+const populateTravelerProfile = (travelRepo) => {
+  annualTotalSpent.innerText = `You've spent $${travelRepo.currentTraveler.totalSpent} in 2022 so far.`
+}
+
+const populatePastTrips = (travelRepo) => {
+  pastTripsGrid.innerHTML = '';
+  travelRepo.currentTraveler.pastTrips.forEach(trip => {
+    pastTripsGrid.innerHTML += `<div class="trip-card">
+        <h4 class="card-title">${trip.destinationData.destination}</h4>
+        <img src="${trip.destinationData.image}" alt="${trip.destinationData.alt}" style="width:200px;height:auto;"</img>
+        <p class="card-year">${trip.date.getFullYear()} </p>
+      </div>`
+  })
+
+}
+
+
 //Query Selectors -----------------------------------------------------------------------------
 
 const travelForm = document.getElementById('travelForm');
@@ -114,6 +136,8 @@ const destinationInput = document.getElementById('destinationInput');
 const durationInput = document.getElementById('numberOfDays');
 const numTravelersInput = document.getElementById('numberOfTravelers');
 const submitButton = document.getElementById('submitTravelRequest');
+const annualTotalSpent = document.getElementById('annualTotal');
+const pastTripsGrid = document.getElementById('pastTrips');
 
 //Event Listeners -----------------------------------------------------------------------------
 
