@@ -27,16 +27,55 @@ class Traveler {
   calculateAnnualTotal() {
     const total = this.allTrips.reduce((sum, trip) => {
       sum += trip.cost
-      return sum
+      return (sum + sum * .90)
     }, 0)
-    console.log(total)
-    return total
+    const rounded = total.toFixed(2)
+    console.log(rounded)
+    return rounded
   }
 
   sortTripsPast() {
     const pastTrips = this.allTrips.forEach(trip => {
-      //compare dates, if less than present push to pastTrips array. 
+      const date = new Date(trip.date)
+      trip.date = date
+      const today = new Date()
+      if (date < today){
+        this.pastTrips.push(trip)
+      }
     })
+    console.log(`PAST`, this.pastTrips)
+  }
+
+  // sortTripsPresent() {
+  //   const presentTrips = this.allTrips.forEach(trip => {
+  //     const date = new Date(trip.date)
+  //     const today = new Date()
+  //     if (date.getDay() === today.getDay()){
+  //       this.presentTrips.push(trip)
+  //     }
+  //   })
+  //   console.log(this.presentTrips)
+  // }
+
+  sortTripsFuture() {
+    const futureTrips = this.allTrips.forEach(trip => {
+      const date = new Date(trip.date)
+      trip.date = date
+      const today = new Date()
+      if (date > today && trip.status === 'approved'){
+        this.futureTrips.push(trip)
+        console.log(`FUTURE`, this.futureTrips)
+      }
+    })
+  }
+
+  sortTripsPending() {
+    const pendingTrips = this.allTrips.forEach(trip => {
+      if (trip.status === 'pending') {
+        this.pendingTrips.push(trip)
+      }
+    })
+    console.log(`PENDING`, this.pendingTrips)
   }
 };
 

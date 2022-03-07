@@ -42,11 +42,13 @@ const returnPromise = () => {
 const loadPage = () => {
   returnPromise().then(allData => {
     const travelRepository = new TravelRepository(allData)
-    travelRepository.createNewTraveler(44)
+    travelRepository.createNewTraveler(38)
     instantiateTripData(travelRepository)
-    travelRepository.currentTraveler.calculateAnnualTotal()
+    calculateAnnualCost(travelRepository)
+    sortTravelerTripData(travelRepository)
   })
 }
+
 
 //Trips-----------------------------------------------------------------------------------------
 
@@ -55,8 +57,16 @@ const instantiateTripData = (travelRepo) => {
   return tripInstantiations
 }
 
+const sortTravelerTripData = (travelRepo) => {
+  travelRepo.currentTraveler.sortTripsPast()
+  travelRepo.currentTraveler.sortTripsFuture()
+  travelRepo.currentTraveler.sortTripsPending()
+}
 //Traveler-----------------------------------------------------------------------------------
 
+const calculateAnnualCost = (travelRepo) => {
+  travelRepo.currentTraveler.calculateAnnualTotal()
+}
 
 //Destinations---------------------------------------------------------------------------------------
 
