@@ -10,14 +10,14 @@
 
 html, body {
   background-color: pink;
-  height: 100%;
+  height: 1500px;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 nav {
-  height: 10%;
+  height: 5%;
   width: 100%;
   background-color: blue;
   display: flex;
@@ -62,7 +62,7 @@ flex-direction: column;
 }
 
 .trips-section {
-  height: 70%;
+  height: 1000px;
   width: 100%;
   background-color: pink;
   display: flex;
@@ -71,8 +71,8 @@ flex-direction: column;
 }
 
 .trips {
-  // height: 100px;
-  // width: 100%;
+  height: 500px;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   overflow: scroll;
@@ -83,7 +83,7 @@ flex-direction: column;
 
 .trip-card{
 border: solid;
-height: 400px;
+height: 200px;
 width: 300px;
 display: flex;
 justify-content: space-between;

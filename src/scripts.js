@@ -48,6 +48,7 @@ const loadPage = () => {
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
     populateTravelerProfile(travelRepository)
+    populatePastTrips(travelRepository)
   })
 }
 
@@ -114,6 +115,18 @@ const populateTravelerProfile = (travelRepo) => {
   annualTotalSpent.innerText = `Total Spent this year: $ ${travelRepo.currentTraveler.totalSpent}`
 }
 
+const populatePastTrips = (travelRepo) => {
+  travelRepo.currentTraveler.pastTrips.forEach(trip => {
+    pastTripsGrid.innerHTML += `  <div class="trip-card">
+        <h4>${trip.destinationData.destination}</h4>
+        <p>Date Travelled: ${trip.date.toString()} </p>
+        <p> Cost: $ ${trip.cost} </p>
+        <img src="${trip.destinationData.image}" alt="${trip.destinationData.alt}" style="width:100px;height:150px;"</img>
+      </div>`
+  })
+
+}
+
 
 //Query Selectors -----------------------------------------------------------------------------
 
@@ -124,6 +137,7 @@ const durationInput = document.getElementById('numberOfDays');
 const numTravelersInput = document.getElementById('numberOfTravelers');
 const submitButton = document.getElementById('submitTravelRequest');
 const annualTotalSpent = document.getElementById('annualTotal');
+const pastTripsGrid = document.getElementById('pastTrips');
 
 //Event Listeners -----------------------------------------------------------------------------
 
