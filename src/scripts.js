@@ -92,10 +92,11 @@ const createTripObject = () => {
   return newTravelRequest;
 }
 
-const postTripRequest = (e, travelRepo) => {
+const postTripRequest = (e) => {
   e.preventDefault()
-  createTripObject(travelRepo)
+  createTripObject()
   fetchCalls.postData('http://localhost:3001/api/v1/trips', createTripObject());
+
   setTimeout (loadPage, 3000)
 }
 //Traveler-----------------------------------------------------------------------------------

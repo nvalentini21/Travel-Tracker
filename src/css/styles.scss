@@ -17,7 +17,7 @@ html, body {
 }
 
 nav {
-  height: 20%;
+  height: 10%;
   width: 100%;
   background-color: blue;
   display: flex;
@@ -38,12 +38,12 @@ flex-direction: column;
 }
 
 .form-section {
-  height: 50%;
+  height: 30%;
   width: 100%;
-  background-color: yellow;
+  background-color: aqua;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .travel-form {
@@ -54,10 +54,22 @@ flex-direction: column;
 .trips-section {
   height: 80%;
   width: 100%;
-  background-color: orange;
+  background-color: pink;
   display: flex;
   align-items: flex-start;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.trips {
+  height: 25%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: scroll;
+  // grid-gap: 20px;
+  // padding: 20px;
+  width: 100%;
+
 }
 
 .travel-form {
