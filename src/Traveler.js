@@ -39,7 +39,7 @@ class Traveler {
       const date = new Date(trip.date)
       trip.date = date
       const today = new Date()
-      if (date < today){
+      if (date < today && trip.status === 'approved'){
         this.pastTrips.push(trip)
       }
     })

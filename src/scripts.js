@@ -33,6 +33,8 @@ const fetchData = () => {
   });
 };
 
+const date1= new Date()
+const date2 = new Date()
 
 let travelRepository = null
 
@@ -74,7 +76,6 @@ const getDestinationID = (travelRepo) => {
       return location
     }
   })
-  console.log('DESTINATION ID', iD.id)
   return iD.id
 }
 

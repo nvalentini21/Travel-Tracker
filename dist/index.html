@@ -14,24 +14,49 @@
     </nav>
     <section class="form-section">
       <form class="travel-form" id="travelForm">
-        <label for="date">Date:</label>
-        <input  class="travel-input" type="date" name="date" id="dateInput" required></input>
-        <label for="destination">Destination:</label>
-        <input class="travel-input" type="tatom ext" name="destination" id="destinationInput" min="0" required></input>
-        <label for="minutesActive">Number of Days:</label>
-        <input class="travel-input" type="number" name="numberOfDays" id="numberOfDays" min="0" required></input>
-        <label for="flightsOfStairs">Travelers:</label>
-        <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" required></input>
+        <div>
+          <label for="date">Date:</label>
+          <input  class="travel-input" type="date" name="date" id="dateInput" required></input>
+          <label for="destination">Destination:</label>
+          <input class="travel-input" type="tatom ext" name="destination" id="destinationInput" min="0" required></input>
+          <label for="minutesActive">Number of Days:</label>
+          <input class="travel-input" type="number" name="numberOfDays" id="numberOfDays" min="0" required></input>
+          <label for="flightsOfStairs">Travelers:</label>
+          <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" required></input>
+        </div>
         <div>
           <button class="button" type="submit-travel-request" id="submitTravelRequest">Search</button>
         </div>
       </form>
+      <section class="traveler-stats">
+        <h3> Your Profile</h3>
+        <p>Total spent this year: </p>
+      </section>
     </section>
     <section class="trips-section">
-      <article class="trips past-trips"> Past Trips</article>
-      <article class="trips present-trips">Present Trips</article>
-      <article class="trips future-trips">Future Trips</article>
-      <article class="trips past-trips">Pending Trips</article>
+      <h3>Your Past Trips: </h3>
+      <article class="trips past-trips">
+        <div class="trip-card"> trip card</div>
+        <div class="trip-card"> trip card</div>
+        <div class="trip-card"> trip card</div>
+        <div class="trip-card"> trip card</div>
+      </article>
+      <h3> Your Current Trips: </h3>
+      <article class="trips present-trips">
+          <div class="trip-card"> trip card
+            <h4>Location:</h4>
+            <p>Date Travelled: </p>
+            <p> Cost </p>
+            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="opera house and city buildings on the water with boats" style="width:200px;height:250px;"</img>
+
+          </div>
+      </article>
+      <h3> Your Future Trips: </h3>
+      <article class="trips future-trips">
+      </article>
+      <h3> Your Pending Trips: </h3>
+      <article class="trips pending-trips">
+      </article>
     </section>
     <script src="bundle.js"></script>
   </body>

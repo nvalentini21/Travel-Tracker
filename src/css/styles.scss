@@ -1,7 +1,7 @@
 
 
 * {
-  border: 1px solid black;
+  // border: 1px solid black;
   padding: 0px;
   margin: 0px;
   font-family: sans-serif;
@@ -42,17 +42,27 @@ flex-direction: column;
   width: 100%;
   background-color: aqua;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .travel-form {
-  justify-content: space-between;
-  width: 100%;
+  border: solid;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.traveler-stats {
+  border: solid;
+  height: 100%;
+  width: 25%;
 }
 
 .trips-section {
-  height: 80%;
+  height: 70%;
   width: 100%;
   background-color: pink;
   display: flex;
@@ -61,15 +71,23 @@ flex-direction: column;
 }
 
 .trips {
-  height: 25%;
-  width: 100%;
+  // height: 100px;
+  // width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   overflow: scroll;
-  // grid-gap: 20px;
+  grid-gap: 20px;
   // padding: 20px;
   width: 100%;
+}
 
+.trip-card{
+border: solid;
+height: 400px;
+width: 300px;
+display: flex;
+justify-content: space-between;
+flex-direction: column;
 }
 
 .travel-form {
