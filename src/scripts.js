@@ -37,12 +37,14 @@ let travelRepository = null
 
 // Functions -----------------------------------------------------------------------------
 
+
+
 const loadPage = () => {
   fetchData().then(allData => {
     travelRepository = new TravelRepository(allData)
     setDateMinAttribute();
     hideRequestConfirmation(confirmationMessage)
-    travelRepository.createNewTraveler(12)
+    travelRepository.createNewTraveler(9)
     updateNameDate(travelRepository, navDate, greeting)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
