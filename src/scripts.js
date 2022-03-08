@@ -19,7 +19,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 // API handling -----------------------------------------------------------------------------
 
 
-const fetchData = () => {
+const fetchData = (id) => {
   const allTravelerData = fetchCalls.fetchData('travelers');
   const allTripData = fetchCalls.fetchData('trips');
   const allDestinationData = fetchCalls.fetchData('destinations');
@@ -37,14 +37,26 @@ let travelRepository = null
 
 // Functions -----------------------------------------------------------------------------
 
+const checkCredentials = (e) => {
+  e.preventDefault()
+  if (username.value.includes('traveler') && username.value.length === 10 && password.value === "travel") {
+    const usernameArray = username.value.split('')
+    const userId = parseInt(usernameArray.splice(usernameArray.length - 2, 2).join(''))
+    domUpdates.hideConfirmationMessage(loginPage)
+    domUpdates.showConfirmationMessage(mainPage)
+    loadPage(userId)
+  } else {
+    console.log(userId)
+    console.log('NOPE')
+  }
+}
 
-
-const loadPage = () => {
+const loadPage = (id) => {
   fetchData().then(allData => {
     travelRepository = new TravelRepository(allData)
     setDateMinAttribute();
     hideRequestConfirmation(confirmationMessage)
-    travelRepository.createNewTraveler(9)
+    travelRepository.createNewTraveler(id)
     updateNameDate(travelRepository, navDate, greeting)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
@@ -162,7 +174,10 @@ const populateAllTripSections = (travelRepo) => {
 }
 
 //Query Selectors -----------------------------------------------------------------------------
-
+const username = document.getElementById('userName');
+const password = document.getElementById('password');
+const loginForm = document.getElementById('loginForm');
+const mainPage = document.getElementById('mainPage');
 const navDate = document.getElementById('localDate');
 const greeting = document.getElementById('greeting');
 const travelForm = document.getElementById('travelForm');
@@ -181,9 +196,40 @@ const confirmationMessage = document.getElementById('requestConfirmation');
 
 //Event Listeners -----------------------------------------------------------------------------
 
-window.addEventListener('load', loadPage)
+// const checkCredentials = (e) => {
+//   e.preventDefault()
+//   if (username.value.includes('traveler') && username.value.length === 10 && password.value === "travel") {
+//     const usernameArray = username.value.split('')
+//     const userId = parseInt(usernameArray.splice(usernameArray.length - 2, 2).join(''))
+//     domUpdates.hideConfirmationMessage(loginPage)
+//     domUpdates.showConfirmationMessage(mainPage)
+//     loadPage(userId)
+//   } else {
+//     console.log(userId)
+//     console.log('NOPE')
+//   }
+// }
+
+loginForm.addEventListener('submit', function (e) {
+  checkCredentials(e)
+})
 travelForm.addEventListener('submit', function (e) {
   postTripRequest(e)
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default handleApiErrors;
