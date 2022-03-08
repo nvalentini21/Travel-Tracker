@@ -15,14 +15,13 @@ html {
 }
 
 nav {
-  height: 130px;
+  height: 100px;
   width: 100%;
   background-color: $nav-background;
   display: flex;
   align-items: center;
   justify-content: space-between;
   @include box-shadow;
-
 }
 
 body {
@@ -39,9 +38,14 @@ body {
   align-items: center;
 }
 
-.loginForm {
+.enter-info {
+  margin-top: 50px;
+}
+
+.login-form {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .login-input {
@@ -49,8 +53,14 @@ body {
   margin-bottom: 50px;
 }
 
-.button-submit {
-  align-self: flex-end;
+.button-enter {
+  height: 25px;
+  width: 80px;
+}
+
+.error-message {
+  font-size: small;
+  color: red;
 }
 
 .form-section {
@@ -67,7 +77,7 @@ body {
   padding: 20px;
   border: solid 0.5px #f0f0f5;
   border-radius: 5px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  @include box-shadow;
   height: 50%;
   width: auto;
   display: flex;
@@ -85,7 +95,7 @@ body {
   background-color: #a3a3c2;
   border: none;
   border-radius: 6px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  @include box-shadow;
 }
 
 .request-confirmation {
@@ -168,13 +178,10 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 flex-direction: column;
-box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+@include box-shadow;
 background-color: #f0f0f5;
 }
 
-img {
-  border-radius: 5px;
-}
 
 .card-year, {
   font-size: 10px;
@@ -188,6 +195,9 @@ img {
   height: 60%;
   width: 75%;
   color: green;
+}
+img {
+  border-radius: 5px;
 }
 
 article {
