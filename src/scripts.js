@@ -33,9 +33,6 @@ const fetchData = () => {
   });
 };
 
-const date1= new Date()
-const date2 = new Date()
-
 let travelRepository = null
 
 // Functions -----------------------------------------------------------------------------
@@ -43,19 +40,17 @@ let travelRepository = null
 const loadPage = () => {
   fetchData().then(allData => {
     travelRepository = new TravelRepository(allData)
-    setDateMinAttribute();
+    // setDateMinAttribute();
     travelRepository.createNewTraveler(9)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
     populateTravelerProfile(travelRepository)
     populateAllTripSections(travelRepository)
-    // populatePending(travelRepository, presentTripsGrid)
-    // populateTrips(travelRepository, futureTripsGrid, 'futureTrips')
-    // populateTrips(travelRepository, pastTripsGrid, 'pastTrips')
-    // populateTrips(travelRepository, presentTripsGrid, 'presentTrips')
   })
 }
+//Misc-----------------------------------------------------------------------------------------
+
 
 const setDateMinAttribute = () => {
   var today = new Date().toJSON().split('T')[0]
@@ -80,6 +75,7 @@ const sortTravelerTripData = (travelRepo) => {
   travelRepo.currentTraveler.sortTripsPast()
   travelRepo.currentTraveler.sortTripsFuture()
   travelRepo.currentTraveler.sortTripsPending()
+  travelRepo.currentTraveler.sortTripsPresent()
 }
 
 const getDestinationID = (travelRepo) => {
