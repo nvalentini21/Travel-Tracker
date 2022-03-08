@@ -108,8 +108,10 @@ const sortTravelerTripData = (travelRepo) => {
 
 const getDestinationID = (travelRepo) => {
   const iD = travelRepo.destinations.find(location => {
-    if (location.destination == destinationInput.value) {
+    if (location.destination == destinationInput.options[destinationInput.selectedIndex].value) {
       return location
+    } else {
+      domUpdates.showElement()
     }
   })
   return iD.id
@@ -135,8 +137,11 @@ const postTripRequest = (e) => {
   fetchCalls.postData('http://localhost:3001/api/v1/trips', obj)
   travelForm.reset()
   showRequestConfirmation(confirmationMessage)
-  setTimeout (loadPage, 3000)
+  setTimeout (function() {
+    loadPage(travelRepository.currentTraveler.id)
+    }, 3000)
 }
+
 //Traveler-----------------------------------------------------------------------------------
 
 const calculateAnnualCost = (travelRepo) => {
