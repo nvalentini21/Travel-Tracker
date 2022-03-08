@@ -18,7 +18,6 @@ describe('Trip', () => {
 
   });
 
-
   it('should be a function', function () {
   expect(Trip).to.be.a('function');
   });

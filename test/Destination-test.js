@@ -3,15 +3,12 @@ import chai from 'chai';
 import allData from './test-data'
 const expect = chai.expect;
 
-
 describe('Destination', () => {
 
   let destination
 
-  destination = new Destination(allData.allDestinationData[0])
-
   beforeEach(function() {
-
+    destination = new Destination(allData.allDestinationData[0])
   });
 
   it('should be a function', function () {

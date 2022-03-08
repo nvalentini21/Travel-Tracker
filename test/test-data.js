@@ -779,67 +779,67 @@ travelerData: {
   },
 
 travelerTripsData: [
+    {
+  "id": 10,
+  "userID": 9,
+  "destinationID": 50,
+  "travelers": 6,
+  "date": "2022/07/23",
+  "duration": 17,
+  "status": "approved",
+  "suggestedActivities": []
+  },
   {
-"id": 10,
-"userID": 9,
-"destinationID": 50,
-"travelers": 6,
-"date": "2022/07/23",
-"duration": 17,
-"status": "approved",
-"suggestedActivities": []
-},
-{
-"id": 74,
-"userID": 9,
-"destinationID": 31,
-"travelers": 5,
-"date": "2020/03/05",
-"duration": 13,
-"status": "approved",
-"suggestedActivities": []
-},
-{
-"id": 95,
-"userID": 9,
-"destinationID": 16,
-"travelers": 4,
-"date": "2020/05/29",
-"duration": 16,
-"status": "approved",
-"suggestedActivities": []
-},
-{
-"id": 105,
-"userID": 9,
-"destinationID": 14,
-"travelers": 2,
-"date": "2019/08/09",
-"duration": 10,
-"status": "approved",
-"suggestedActivities": []
-},
-{
-"id": 106,
-"userID": 9,
-"destinationID": 34,
-"travelers": 5,
-"date": "2020/06/08",
-"duration": 17,
-"status": "approved",
-"suggestedActivities": []
-},
-{
-"id": 182,
-"userID": 9,
-"destinationID": 45,
-"travelers": 6,
-"date": "2021/01/15",
-"duration": 5,
-"status": "approved",
-"suggestedActivities": []
-}
-]
+  "id": 74,
+  "userID": 9,
+  "destinationID": 31,
+  "travelers": 5,
+  "date": "2020/03/05",
+  "duration": 13,
+  "status": "approved",
+  "suggestedActivities": []
+  },
+  {
+  "id": 95,
+  "userID": 9,
+  "destinationID": 16,
+  "travelers": 4,
+  "date": "2020/05/29",
+  "duration": 16,
+  "status": "approved",
+  "suggestedActivities": []
+  },
+  {
+  "id": 105,
+  "userID": 9,
+  "destinationID": 14,
+  "travelers": 2,
+  "date": "2019/08/09",
+  "duration": 10,
+  "status": "approved",
+  "suggestedActivities": []
+  },
+  {
+  "id": 106,
+  "userID": 9,
+  "destinationID": 34,
+  "travelers": 5,
+  "date": "2020/06/08",
+  "duration": 17,
+  "status": "approved",
+  "suggestedActivities": []
+  },
+  {
+  "id": 182,
+  "userID": 9,
+  "destinationID": 45,
+  "travelers": 6,
+  "date": "2021/01/15",
+  "duration": 5,
+  "status": "approved",
+  "suggestedActivities": []
+  }
+   ]
 };
 
 export default allData;

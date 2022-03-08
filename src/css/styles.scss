@@ -1,4 +1,6 @@
 
+@import "./_variables.scss";
+@import "./_mixins.scss";
 
 * {
   padding: 0px;
@@ -15,11 +17,11 @@ html {
 nav {
   height: 130px;
   width: 100%;
-  background-color: #c2c2d6;
+  background-color: $nav-background;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  @include box-shadow;
 
 }
 
