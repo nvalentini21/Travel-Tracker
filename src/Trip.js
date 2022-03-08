@@ -39,7 +39,10 @@ class Trip {
   }
 
   calcTotalCost() {
-    this.cost = this.calcTotalFlightCost() + this.calcTotalLodgingCost()
+    const cost = this.calcTotalFlightCost() + this.calcTotalLodgingCost()
+    const costWithFee = cost + (cost * 0.10)
+    console.log('COST TOTAL', costWithFee)
+    this.cost = Math.round(costWithFee)
   }
 };
 

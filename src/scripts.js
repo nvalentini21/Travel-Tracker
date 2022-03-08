@@ -43,6 +43,7 @@ const loadPage = () => {
     setDateMinAttribute();
     hideRequestConfirmation(confirmationMessage)
     travelRepository.createNewTraveler(12)
+    updateNameDate(travelRepository, navDate, greeting)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
@@ -130,6 +131,11 @@ const populateTravelerProfile = (travelRepo) => {
   domUpdates.updateTravelerProfile(travelRepo, annualTotalSpent)
 }
 
+const updateNameDate = (travelRepo, elm1, elm2) => {
+  domUpdates.updateDate(elm1)
+  domUpdates.updateName(travelRepo, elm2)
+}
+
 const populateTrips = (travelRepo, tripGrid, array) => {
   if (travelRepo.currentTraveler[array].length > 0) {
     tripGrid.innerHTML = '';
@@ -155,6 +161,8 @@ const populateAllTripSections = (travelRepo) => {
 
 //Query Selectors -----------------------------------------------------------------------------
 
+const navDate = document.getElementById('localDate');
+const greeting = document.getElementById('greeting');
 const travelForm = document.getElementById('travelForm');
 const dateInput = document.getElementById('dateInput');
 const destinationInput = document.getElementById('destinationInput');
