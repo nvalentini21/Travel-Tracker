@@ -74,7 +74,6 @@ describe('Traveler', () => {
 
   it('should be able to instantiate Trips from the trips data', function () {
     traveler.instantiateTrips(travelRepository)
-    console.log(traveler.allTrips)
     expect(traveler.allTrips[0].userID).to.eql(9);
   });
 

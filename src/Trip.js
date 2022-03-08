@@ -8,7 +8,7 @@ class Trip {
     this.date = travelerData.date;
     this.duration = travelerData.duration;
     this.status = travelerData.status;
-    this.suggestedActivities = travelerData.activities;
+    this.suggestedActivities = [];
     this.cost = 0;
     this.destinationID = travelerData.destinationID;
     this.destinationData = ''
