@@ -6,52 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webpack Starter Kit</title>
   </head>
-  <body class=main-section>
+  <body class="main-section">
     <nav class="nav-bar" id="navBar">
       <h1>Travel Tracker</h1>
       <p class="local-date" id="localDate">Today's Date</p>
     </nav>
-    <section class="form-section">
-      <section class="traveler-stats">
-        <h2 class="greeting" id="greeting">Hello!</h2>
-        <p class="annual-total" id="annualTotal">$0.00</p>
-      </section>
-      <p class="find-next-trip"> Where to next?</p>
-      <form class="travel-form" id="travelForm">
-        <div class="input-area">
-          <label for="dateInput">Date:</label>
-          <input  class="travel-input" type="date" name="date" id="dateInput" min="" required></input>
-          <label for="destinationInput">Destination:</label>
-          <input class="travel-input" type="tatom ext" name="destination" id="destinationInput" placeholder="City, Country" required></input>
-          <label for="numberOfDays">Duration:</label>
-          <input class="travel-input" type="number" name="duration" id="numberOfDays" value="City, Country" min="0" max="90" placeholder="# of days" required></input>
-          <label for="numberOfTravelers">Travelers:</label>
-          <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" max="10" placeholder="# of travelers"required></input>
-        </div>
-        <div>
-          <button class="button-submit" type="submit-travel-request" id="submitTravelRequest">Search</button>
-        </div>
-        <p class="request-confirmation hidden" id="requestConfirmation"> Request pending! See your pending trips below.</p>
+    <section class="login-page" id="loginPage">
+      <p> Please enter your username and password below:</p>
+      <form class="login-form" id="loginForm">
+        <div class="login-inputs" id="loginInput">
+          <label for="userName">Username:</label>
+          <input  class="login-input username-input" type="text" name="username" id="userName" placeholder="e.g. username50" required></input>
+          <label for="password">Password:</label>
+          <input  class="login-input username-input" type="text" name="password" id="password" required></input>
+          <button class="button-submit" type="login-button" id="loginButton">Login</button>
+      </div>
       </form>
     </section>
-    <section class="trips-section">
-      <h3 class="trip-titles">Your Past Trips: </h3>
-      <article class="trips past-trips" id="pastTrips">
-        <p class="empty-message"> You have no past trips.</p>
-      </article>
-      <h3 class="trip-titles"> Your Current Trips: </h3>
-      <article class="trips present-trips" id="presentTrips">
-        <p class="empty-message">You have no current trips.</p>
-      </article>
-      <h3 class="trip-titles"> Your Future Trips: </h3>
-      <article class="trips future-trips" id="futureTrips">
-        <p class="empty-message">You have no future trips.</p>
-      </article>
-      <h3 class="trip-titles"> Your Pending Trips: </h3>
-      <article class="trips pending-trips" id="pendingTrips">
-        <p class="empty-message">You have no pending trips.</p>
-      </article>
-    </section>
+    <main class="main-section hidden">
+      <section class="form-section">
+        <section class="traveler-stats">
+          <h2 class="greeting" id="greeting">Hello!</h2>
+          <p class="annual-total" id="annualTotal">$0.00</p>
+        </section>
+        <p class="find-next-trip"> Where to next?</p>
+        <form class="travel-form" id="travelForm">
+          <div class="input-area">
+            <label for="dateInput">Date:</label>
+            <input  class="travel-input" type="date" name="date" id="dateInput" min="" required></input>
+            <label for="destinationInput">Destination:</label>
+            <input class="travel-input" type="tatom ext" name="destination" id="destinationInput" placeholder="City, Country" required></input>
+            <label for="numberOfDays">Duration:</label>
+            <input class="travel-input" type="number" name="duration" id="numberOfDays" value="City, Country" min="0" max="90" placeholder="# of days" required></input>
+            <label for="numberOfTravelers">Travelers:</label>
+            <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" max="10" placeholder="# of travelers"required></input>
+          </div>
+          <div>
+            <button class="button-submit" type="submit-travel-request" id="submitTravelRequest">Search</button>
+          </div>
+          <p class="request-confirmation hidden" id="requestConfirmation"> Request pending! See your pending trips below.</p>
+        </form>
+      </section>
+      <section class="trips-section">
+        <h3 class="trip-titles">Your Past Trips: </h3>
+        <article class="trips past-trips" id="pastTrips">
+          <p class="empty-message"> You have no past trips.</p>
+        </article>
+        <h3 class="trip-titles"> Your Current Trips: </h3>
+        <article class="trips present-trips" id="presentTrips">
+          <p class="empty-message">You have no current trips.</p>
+        </article>
+        <h3 class="trip-titles"> Your Future Trips: </h3>
+        <article class="trips future-trips" id="futureTrips">
+          <p class="empty-message">You have no future trips.</p>
+        </article>
+        <h3 class="trip-titles"> Your Pending Trips: </h3>
+        <article class="trips pending-trips" id="pendingTrips">
+          <p class="empty-message">You have no pending trips.</p>
+        </article>
+      </section>
+    </main>
     <script src="bundle.js"></script>
   </body>
 </html>
