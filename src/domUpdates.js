@@ -21,11 +21,11 @@ let domUpdates ={
       </div>`
   },
 
-  showConfirmationMessage: (element) => {
+  showElement: (element) => {
     element.classList.remove('hidden')
   },
 
-  hideConfirmationMessage: (element) => {
+  hideElement: (element) => {
     element.classList.add('hidden')
   },
 

@@ -18,7 +18,6 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // API handling -----------------------------------------------------------------------------
 
-
 const fetchData = (id) => {
   const allTravelerData = fetchCalls.fetchData('travelers');
   const allTripData = fetchCalls.fetchData('trips');
@@ -33,23 +32,39 @@ const fetchData = (id) => {
   });
 };
 
-let travelRepository = null
+const  handleApiErrors = (error) => {
+  if (error.message === 'Failed to fetch'){
+    window.alert("Ooops! The server is down. Please retry.");
+  };
+};
 
 // Functions -----------------------------------------------------------------------------
 
 const checkCredentials = (e) => {
   e.preventDefault()
-  if (username.value.includes('traveler') && username.value.length === 10 && password.value === "travel") {
+  if (username.value.includes('traveler') && password.value === "travel" && username.value.length > 8 && username.value.length < 11) {
     const usernameArray = username.value.split('')
-    const userId = parseInt(usernameArray.splice(usernameArray.length - 2, 2).join(''))
-    domUpdates.hideConfirmationMessage(loginPage)
-    domUpdates.showConfirmationMessage(mainPage)
-    loadPage(userId)
+    if (username.value.length === 10) {
+      const userId = parseInt(usernameArray.splice(usernameArray.length - 2, 2).join(''))
+      domUpdates.hideElement(loginPage)
+      domUpdates.showElement(mainPage)
+      console.log(userId)
+      loadPage(userId)
+    }
+    if (username.value.length === 9){
+      const userId = parseInt(usernameArray.splice(usernameArray.length - 1, 1).join(''))
+      domUpdates.hideElement(loginPage)
+      domUpdates.showElement(mainPage)
+      console.log(userId)
+      loadPage(userId)
+    }
   } else {
-    console.log(userId)
-    console.log('NOPE')
+    domUpdates.showElement(errorMessage)
+    setTimeout(removeErrorMessageAfterTime, 2000)
+    loginForm.reset()
   }
 }
+
 
 const loadPage = (id) => {
   fetchData().then(allData => {
@@ -64,21 +79,18 @@ const loadPage = (id) => {
     populateTravelerProfile(travelRepository)
     populateAllTripSections(travelRepository)
   })
-}
-//Misc-----------------------------------------------------------------------------------------
+};
 
+//Misc-----------------------------------------------------------------------------------------
 
 const setDateMinAttribute = () => {
   var today = new Date().toJSON().split('T')[0]
   minDate.setAttribute('min', today)
 }
 
-const  handleApiErrors = (error) => {
-  if (error.message === 'Failed to fetch'){
-    window.alert("Ooops! Something went wrong. Please retry.");
-  };
-};
-
+const removeErrorMessageAfterTime = () => {
+  domUpdates.hideElement(errorMessage)
+}
 
 //Trips-----------------------------------------------------------------------------------------
 
@@ -134,11 +146,11 @@ const calculateAnnualCost = (travelRepo) => {
 //DOM Updates ----------------------------------------------------------------------------------
 
 const showRequestConfirmation = (element) => {
-  domUpdates.showConfirmationMessage(element)
+  domUpdates.showElement(element)
 }
 
 const hideRequestConfirmation = (element) => {
-  domUpdates.hideConfirmationMessage(element)
+  domUpdates.hideElement(element)
 }
 
 const populateTravelerProfile = (travelRepo) => {
@@ -177,6 +189,7 @@ const populateAllTripSections = (travelRepo) => {
 const username = document.getElementById('userName');
 const password = document.getElementById('password');
 const loginForm = document.getElementById('loginForm');
+const errorMessage = document.getElementById('loginErrorMessage');
 const mainPage = document.getElementById('mainPage');
 const navDate = document.getElementById('localDate');
 const greeting = document.getElementById('greeting');
@@ -196,20 +209,6 @@ const confirmationMessage = document.getElementById('requestConfirmation');
 
 //Event Listeners -----------------------------------------------------------------------------
 
-// const checkCredentials = (e) => {
-//   e.preventDefault()
-//   if (username.value.includes('traveler') && username.value.length === 10 && password.value === "travel") {
-//     const usernameArray = username.value.split('')
-//     const userId = parseInt(usernameArray.splice(usernameArray.length - 2, 2).join(''))
-//     domUpdates.hideConfirmationMessage(loginPage)
-//     domUpdates.showConfirmationMessage(mainPage)
-//     loadPage(userId)
-//   } else {
-//     console.log(userId)
-//     console.log('NOPE')
-//   }
-// }
-
 loginForm.addEventListener('submit', function (e) {
   checkCredentials(e)
 })
@@ -217,19 +216,8 @@ travelForm.addEventListener('submit', function (e) {
   postTripRequest(e)
 })
 
+//Global Variable -----------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+let travelRepository = null
 
 export default handleApiErrors;
