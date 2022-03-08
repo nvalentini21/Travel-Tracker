@@ -18,8 +18,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // API handling -----------------------------------------------------------------------------
 
-
-const fetchData = () => {
+const fetchData = (id) => {
   const allTravelerData = fetchCalls.fetchData('travelers');
   const allTripData = fetchCalls.fetchData('trips');
   const allDestinationData = fetchCalls.fetchData('destinations');
@@ -33,40 +32,74 @@ const fetchData = () => {
   });
 };
 
-let travelRepository = null
+const  handleApiErrors = (error) => {
+  if (error.message === 'Failed to fetch'){
+    window.alert("Ooops! The server is down. Please retry.");
+  };
+};
 
 // Functions -----------------------------------------------------------------------------
 
+const checkCredentials = (e) => {
+  e.preventDefault()
+  if (username.value.includes('traveler') && password.value === "travel" && username.value.length > 8 && username.value.length < 11) {
+    const usernameArray = username.value.split('')
+    if (username.value.length === 10) {
+      const userId = parseInt(usernameArray.splice(usernameArray.length - 2, 2).join(''))
+      domUpdates.hideElement(loginPage)
+      domUpdates.showElement(mainPage)
+      console.log(userId)
+      loadPage(userId)
+    }
+    if (username.value.length === 9){
+      const userId = parseInt(usernameArray.splice(usernameArray.length - 1, 1).join(''))
+      domUpdates.hideElement(loginPage)
+      domUpdates.showElement(mainPage)
+      console.log(userId)
+      loadPage(userId)
+    }
+  } else {
+    domUpdates.showElement(errorMessage)
+    setTimeout(removeErrorMessageAfterTime, 2000)
+    loginForm.reset()
+  }
+}
 
 
-const loadPage = () => {
+const loadPage = (id) => {
   fetchData().then(allData => {
     travelRepository = new TravelRepository(allData)
     setDateMinAttribute();
     hideRequestConfirmation(confirmationMessage)
-    travelRepository.createNewTraveler(9)
+    travelRepository.createNewTraveler(id)
     updateNameDate(travelRepository, navDate, greeting)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
     populateTravelerProfile(travelRepository)
     populateAllTripSections(travelRepository)
+    updateDestinationSelection(travelRepository)
   })
-}
-//Misc-----------------------------------------------------------------------------------------
+};
 
+//Misc-----------------------------------------------------------------------------------------
 
 const setDateMinAttribute = () => {
   var today = new Date().toJSON().split('T')[0]
   minDate.setAttribute('min', today)
 }
 
-const  handleApiErrors = (error) => {
-  if (error.message === 'Failed to fetch'){
-    window.alert("Ooops! Something went wrong. Please retry.");
-  };
-};
+const removeErrorMessageAfterTime = () => {
+  domUpdates.hideElement(errorMessage)
+}
 
+const updateDestinationSelection = (travelRepo) => {
+  const destinations = travelRepo.destinations.map(destination => destination.destination)
+  const destinationsSorted = destinations.sort()
+  destinationsSorted.forEach(name => {
+    domUpdates.createDestinationList(destinationInput, name)
+  })
+}
 
 //Trips-----------------------------------------------------------------------------------------
 
@@ -83,8 +116,15 @@ const sortTravelerTripData = (travelRepo) => {
 }
 
 const getDestinationID = (travelRepo) => {
+  if (destinationInput.options[destinationInput.selectedIndex].value == "All Locations") {
+    domUpdates.showElement(destinationError)
+    travelForm.reset()
+    setTimeout (function() {
+      domUpdates.hideElement(destinationError)
+      }, 3000)
+  }
   const iD = travelRepo.destinations.find(location => {
-    if (location.destination == destinationInput.value) {
+    if (location.destination == destinationInput.options[destinationInput.selectedIndex].value) {
       return location
     }
   })
@@ -107,12 +147,16 @@ const createTripObject = () => {
 
 const postTripRequest = (e) => {
   e.preventDefault()
+  const destinationValue = destinationInput.options[destinationInput.selectedIndex].value
   const obj = createTripObject()
   fetchCalls.postData('http://localhost:3001/api/v1/trips', obj)
   travelForm.reset()
   showRequestConfirmation(confirmationMessage)
-  setTimeout (loadPage, 3000)
+  setTimeout (function() {
+    loadPage(travelRepository.currentTraveler.id)
+    }, 3000)
 }
+
 //Traveler-----------------------------------------------------------------------------------
 
 const calculateAnnualCost = (travelRepo) => {
@@ -122,11 +166,11 @@ const calculateAnnualCost = (travelRepo) => {
 //DOM Updates ----------------------------------------------------------------------------------
 
 const showRequestConfirmation = (element) => {
-  domUpdates.showConfirmationMessage(element)
+  domUpdates.showElement(element)
 }
 
 const hideRequestConfirmation = (element) => {
-  domUpdates.hideConfirmationMessage(element)
+  domUpdates.hideElement(element)
 }
 
 const populateTravelerProfile = (travelRepo) => {
@@ -162,7 +206,11 @@ const populateAllTripSections = (travelRepo) => {
 }
 
 //Query Selectors -----------------------------------------------------------------------------
-
+const username = document.getElementById('userName');
+const password = document.getElementById('password');
+const loginForm = document.getElementById('loginForm');
+const errorMessage = document.getElementById('loginErrorMessage');
+const mainPage = document.getElementById('mainPage');
 const navDate = document.getElementById('localDate');
 const greeting = document.getElementById('greeting');
 const travelForm = document.getElementById('travelForm');
@@ -171,6 +219,10 @@ const destinationInput = document.getElementById('destinationInput');
 const durationInput = document.getElementById('numberOfDays');
 const numTravelersInput = document.getElementById('numberOfTravelers');
 const submitButton = document.getElementById('submitTravelRequest');
+
+const destinationError = document.getElementById('destinationError');
+const dateError = document.getElementById('dateError');
+
 const annualTotalSpent = document.getElementById('annualTotal');
 const pastTripsGrid = document.getElementById('pastTrips');
 const presentTripsGrid = document.getElementById('presentTrips');
@@ -181,9 +233,15 @@ const confirmationMessage = document.getElementById('requestConfirmation');
 
 //Event Listeners -----------------------------------------------------------------------------
 
-window.addEventListener('load', loadPage)
+loginForm.addEventListener('submit', function (e) {
+  checkCredentials(e)
+})
 travelForm.addEventListener('submit', function (e) {
   postTripRequest(e)
 })
+
+//Global Variable -----------------------------------------------------------------------------
+
+let travelRepository = null
 
 export default handleApiErrors;

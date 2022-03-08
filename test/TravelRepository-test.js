@@ -1,4 +1,5 @@
 import TravelRepository from '../src/TravelRepository'
+import Traveler from '../src/Traveler'
 import chai from 'chai';
 import allData from './test-data'
 const expect = chai.expect;
@@ -27,21 +28,20 @@ describe('Travel Repository', () => {
   });
 
   it('should keep track of a collection of all trip data', function () {
-    expect(travelRepository.trips).to.eql(allData.allTripsData);
+    expect(travelRepository.trips).to.eql(allData.allTripData);
   });
 
   it('should keep track of a collection of all destination data', function () {
     expect(travelRepository.destinations).to.eql(allData.allDestinationData);
   });
 
-  it.skip('should keep track of the current user', function () {
-    travelRepository.createNewTraveler(1);
-    expect(travelRepository.currentUser.name).to.eql(allData.allTravelerData[0].name);
-    expect(travelRepository.currentUser).to.eql(allData.allTravelerData[0]);
+  it('should instantiate a new user based on the current user and keep track of that user', function() {
+    travelRepository.createNewTraveler(1)
+    expect(travelRepository.currentTraveler).to.be.an.instanceof(Traveler);
+    expect(travelRepository.currentTraveler.name).to.eql(allData.allTravelerData[0].name);
   });
 
-  it.skip('should instantiate a new user based on the current user', function() {
-  expect(travelRepository.createNewTraveler(1)).to.be.an.instanceof(Traveler);
-  });
-
+  it ('should return an error if the user cannot be found by ID', function() {
+    expect(travelRepository.createNewTraveler(57)).to.equal(`ID invalid. Cannot find traveler.`);
+  })
 });
