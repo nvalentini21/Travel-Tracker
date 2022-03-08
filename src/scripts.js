@@ -78,6 +78,7 @@ const loadPage = (id) => {
     sortTravelerTripData(travelRepository)
     populateTravelerProfile(travelRepository)
     populateAllTripSections(travelRepository)
+    updateDestinationSelection(travelRepository)
   })
 };
 
@@ -90,6 +91,13 @@ const setDateMinAttribute = () => {
 
 const removeErrorMessageAfterTime = () => {
   domUpdates.hideElement(errorMessage)
+}
+
+const updateDestinationSelection = (travelRepo) => {
+  const destinations = travelRepo.destinations.map(destination => destination.destination)
+  destinations.forEach(name => {
+    domUpdates.createDestinationList(destinationInput, name)
+  })
 }
 
 //Trips-----------------------------------------------------------------------------------------
@@ -111,7 +119,7 @@ const getDestinationID = (travelRepo) => {
     if (location.destination == destinationInput.options[destinationInput.selectedIndex].value) {
       return location
     } else {
-      domUpdates.showElement()
+      domUpdates.showElement(destinationError)
     }
   })
   return iD.id
@@ -204,6 +212,7 @@ const destinationInput = document.getElementById('destinationInput');
 const durationInput = document.getElementById('numberOfDays');
 const numTravelersInput = document.getElementById('numberOfTravelers');
 const submitButton = document.getElementById('submitTravelRequest');
+const destinationError = document.getElementById('destinationError');
 const annualTotalSpent = document.getElementById('annualTotal');
 const pastTripsGrid = document.getElementById('pastTrips');
 const presentTripsGrid = document.getElementById('presentTrips');

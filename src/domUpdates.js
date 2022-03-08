@@ -36,6 +36,10 @@ let domUpdates ={
   updateName: (travelRepo, element) => {
     element.innerText = `Hello, ${travelRepo.currentTraveler.name.split(' ')[0]}!`
   },
+
+  createDestinationList: (element, place) => {
+    element.innerHTML += `<option value="${place}">${place}</option>`
+  }
 }
 
 export default domUpdates;
