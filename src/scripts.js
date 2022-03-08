@@ -40,8 +40,9 @@ let travelRepository = null
 const loadPage = () => {
   fetchData().then(allData => {
     travelRepository = new TravelRepository(allData)
-    // setDateMinAttribute();
-    travelRepository.createNewTraveler(9)
+    setDateMinAttribute();
+    hideRequestConfirmation(confirmationMessage)
+    travelRepository.createNewTraveler(12)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
@@ -105,6 +106,8 @@ const postTripRequest = (e) => {
   e.preventDefault()
   const obj = createTripObject()
   fetchCalls.postData('http://localhost:3001/api/v1/trips', obj)
+  travelForm.reset()
+  showRequestConfirmation(confirmationMessage)
   setTimeout (loadPage, 3000)
 }
 //Traveler-----------------------------------------------------------------------------------
@@ -114,6 +117,14 @@ const calculateAnnualCost = (travelRepo) => {
 }
 
 //DOM Updates ----------------------------------------------------------------------------------
+
+const showRequestConfirmation = (element) => {
+  domUpdates.showConfirmationMessage(element)
+}
+
+const hideRequestConfirmation = (element) => {
+  domUpdates.hideConfirmationMessage(element)
+}
 
 const populateTravelerProfile = (travelRepo) => {
   domUpdates.updateTravelerProfile(travelRepo, annualTotalSpent)
@@ -156,6 +167,7 @@ const presentTripsGrid = document.getElementById('presentTrips');
 const futureTripsGrid = document.getElementById('futureTrips');
 const pendingTripsGrid = document.getElementById('pendingTrips');
 const minDate = document.getElementById('dateInput')
+const confirmationMessage = document.getElementById('requestConfirmation');
 
 //Event Listeners -----------------------------------------------------------------------------
 

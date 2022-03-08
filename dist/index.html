@@ -24,13 +24,14 @@
           <label for="destinationInput">Destination:</label>
           <input class="travel-input" type="tatom ext" name="destination" id="destinationInput" placeholder="City, Country" required></input>
           <label for="numberOfDays">Duration:</label>
-          <input class="travel-input" type="number" name="duration" id="numberOfDays" value="City, Country" min="0" max="90" required></input>
+          <input class="travel-input" type="number" name="duration" id="numberOfDays" value="City, Country" min="0" max="90" placeholder="# of days" required></input>
           <label for="numberOfTravelers">Travelers:</label>
-          <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" max="10" required></input>
+          <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" max="10" placeholder="# of travelers"required></input>
         </div>
         <div>
           <button class="button-submit" type="submit-travel-request" id="submitTravelRequest">Search</button>
         </div>
+        <p class="request-confirmation hidden" id="requestConfirmation"> Request pending! See your pending trips below.</p>
       </form>
     </section>
     <section class="trips-section">

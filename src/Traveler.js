@@ -58,7 +58,7 @@ class Traveler {
       const dateArray = date.toString().split(' ').splice(1, 3)
       const today = new Date()
       const todayArray = today.toString().split(' ').splice(1, 3)
-      if (dateArray[1] === todayArray[1] && dateArray[0] === todayArray[0] && dateArray[2] === todayArray[2]){
+      if (dateArray[1] === todayArray[1] && dateArray[0] === todayArray[0] && dateArray[2] === todayArray[2] && trip.status === 'approved'){
         this.presentTrips.push(trip)
         this.presentTrips.sort((a, b) => a.date - b.date)
       }

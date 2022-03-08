@@ -20,6 +20,14 @@ populatePendingSection: (travelRepo, element, trip) => {
       <p class="card-cost"> Estimated Total: $${trip.cost} </p>
     </div>`
 },
+
+showConfirmationMessage: (element) => {
+  element.classList.remove('hidden')
+},
+
+hideConfirmationMessage: (element) => {
+  element.classList.add('hidden')
+}
 }
 
 export default domUpdates;
