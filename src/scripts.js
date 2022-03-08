@@ -48,8 +48,11 @@ const loadPage = () => {
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
     populateTravelerProfile(travelRepository)
-    populateTrips(travelRepository, pastTripsGrid)
-
+    populateAllTripSections(travelRepository)
+    // populatePending(travelRepository, presentTripsGrid)
+    // populateTrips(travelRepository, futureTripsGrid, 'futureTrips')
+    // populateTrips(travelRepository, pastTripsGrid, 'pastTrips')
+    // populateTrips(travelRepository, presentTripsGrid, 'presentTrips')
   })
 }
 
@@ -114,14 +117,28 @@ const populateTravelerProfile = (travelRepo) => {
   domUpdates.updateTravelerProfile(travelRepo, annualTotalSpent)
 }
 
-const populateTrips = (travelRepo, tripGrid) => {
-  tripGrid.innerHTML = '';
-  travelRepo.currentTraveler.pastTrips.forEach(trip => {
-    domUpdates.populateTripSection(travelRepo, pastTripsGrid, trip)
-
-  })
+const populateTrips = (travelRepo, tripGrid, array) => {
+  if (travelRepo.currentTraveler[array].length > 0) {
+    tripGrid.innerHTML = '';
+    travelRepo.currentTraveler[array].forEach(trip => {
+      domUpdates.populateTripSection(travelRepo, tripGrid, trip)
+    })
+  }
 }
-
+const populatePending = (travelRepo) => {
+  if (travelRepo.currentTraveler.pendingTrips.length > 0) {
+    pendingTripsGrid.innerHTML = '';
+    travelRepo.currentTraveler.pendingTrips.forEach(trip => {
+      domUpdates.populatePendingSection(travelRepo, pendingTripsGrid, trip)
+    })
+  }
+}
+const populateAllTripSections = (travelRepo) => {
+  populateTrips(travelRepo, pastTripsGrid, 'pastTrips')
+  populateTrips(travelRepo, presentTripsGrid, 'presentTrips')
+  populateTrips(travelRepo, futureTripsGrid, 'futureTrips')
+  populatePending(travelRepo)
+}
 
 //Query Selectors -----------------------------------------------------------------------------
 

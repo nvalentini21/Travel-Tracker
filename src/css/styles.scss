@@ -1,6 +1,7 @@
 
 
 * {
+  padding: 0px;
   margin: 0px;
   font-family: sans-serif;
   font-weight: lighter;
@@ -105,7 +106,7 @@ body {
 
 .trip-card{
 background-color: white;
-border-radius: 5px;
+border-radius: 10px;
 border: solid 0.5px #f0f0f5;
 height: 200px;
 width: 300px;
@@ -116,11 +117,16 @@ flex-direction: column;
 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+img {
+  border-radius: 5px;
+}
+
 .card-year, {
   font-size: 10px;
 }
 
 .card-title, {
+  font-weight: 10;
 }
 
 // .card-cost, {

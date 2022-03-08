@@ -28,7 +28,7 @@ class Traveler {
     const total = this.allTrips.reduce((sum, trip) => {
       const todayDate = new Date()
       const tripDate = new Date(trip.date)
-      if (tripDate.getFullYear() === todayDate.getFullYear()){
+      if (tripDate.getFullYear() === todayDate.getFullYear() && trip.status === 'approved'){
         sum += trip.cost
       }
       return sum
