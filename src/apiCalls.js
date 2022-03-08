@@ -1,4 +1,5 @@
 import handleApiErrors from './scripts'
+import "./scripts"
 
 const fetchCalls = {
   fetchData: (path) => {
@@ -15,9 +16,23 @@ const fetchCalls = {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => response.json())
+  .then(response => {
+    console.log('RESPONSE>>>>>', response)
+    if(!response.ok){
+      throw new Error('Please select a date.')
+    } else {
+      response.json()
+    }
+  })
   .then(data => console.log(data))
-  .catch(err => handleApiErrors(err))
+  .catch(err => {
+    console.log(err)
+    dateError.classList.remove('hidden')
+    dateError.innerText = err
+    setTimeout (function() {
+      requestConfirmation.classList.add('hidden')
+      }, 3000)
+    })
   },
 };
 

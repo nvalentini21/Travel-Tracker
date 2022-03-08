@@ -34,22 +34,22 @@
         <form class="travel-form" id="travelForm">
           <div class="input-area">
             <label for="dateInput">Date:</label>
-            <input  class="travel-input" type="date" name="date" id="dateInput" min=""></input>
+            <input  class="travel-input" type="date" name="date" id="dateInput" min="" required></input>
             <label for="destinationInput">Destination:</label>
-            <select class="travel-input select-destination" id=destinationInput>
-              <option value="Lima, Peru">Lima, Peru</option>
+            <select class="travel-input select-destination" name="destinations" id=destinationInput required>
+              <option value="All Locations">All Locations:</option>
             </select>
-            <!-- <input class="travel-input" type="tatom ext" name="destination" id="destinationInput" placeholder="City, Country"></input> -->
             <label for="numberOfDays">Duration:</label>
-            <input class="travel-input" type="number" name="duration" id="numberOfDays" value="City, Country" min="0" max="90" placeholder="# of days"></input>
+            <input class="travel-input" type="number" name="duration" id="numberOfDays" min="1" max="90" placeholder="# of days" required></input>
             <label for="numberOfTravelers">Travelers:</label>
-              <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" max="10" placeholder="# of travelers"></input>
+              <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="1" max="10" placeholder="# of travelers" required></input>
           </div>
           <div>
             <button class="button-submit" type="submit-travel-request" id="submitTravelRequest">Search</button>
           </div>
           <p class="request-confirmation hidden" id="requestConfirmation"> Request pending! See your pending trips below.</p>
-          <p class="request-confirmation hidden" id="destinationError"> Please enter destination in the correct format.</p>
+          <p class="request-confirmation hidden" id="destinationError"> Please select a destination.</p>
+          <p class="request-confirmation hidden" id="dateError"></p>
         </form>
       </section>
       <section class="trips-section">

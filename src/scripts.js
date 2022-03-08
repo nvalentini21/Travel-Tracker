@@ -95,7 +95,8 @@ const removeErrorMessageAfterTime = () => {
 
 const updateDestinationSelection = (travelRepo) => {
   const destinations = travelRepo.destinations.map(destination => destination.destination)
-  destinations.forEach(name => {
+  const destinationsSorted = destinations.sort()
+  destinationsSorted.forEach(name => {
     domUpdates.createDestinationList(destinationInput, name)
   })
 }
@@ -115,11 +116,16 @@ const sortTravelerTripData = (travelRepo) => {
 }
 
 const getDestinationID = (travelRepo) => {
+  if (destinationInput.options[destinationInput.selectedIndex].value == "All Locations") {
+    domUpdates.showElement(destinationError)
+    travelForm.reset()
+    setTimeout (function() {
+      domUpdates.hideElement(destinationError)
+      }, 3000)
+  }
   const iD = travelRepo.destinations.find(location => {
     if (location.destination == destinationInput.options[destinationInput.selectedIndex].value) {
       return location
-    } else {
-      domUpdates.showElement(destinationError)
     }
   })
   return iD.id
@@ -141,6 +147,7 @@ const createTripObject = () => {
 
 const postTripRequest = (e) => {
   e.preventDefault()
+  const destinationValue = destinationInput.options[destinationInput.selectedIndex].value
   const obj = createTripObject()
   fetchCalls.postData('http://localhost:3001/api/v1/trips', obj)
   travelForm.reset()
@@ -212,7 +219,10 @@ const destinationInput = document.getElementById('destinationInput');
 const durationInput = document.getElementById('numberOfDays');
 const numTravelersInput = document.getElementById('numberOfTravelers');
 const submitButton = document.getElementById('submitTravelRequest');
+
 const destinationError = document.getElementById('destinationError');
+const dateError = document.getElementById('dateError');
+
 const annualTotalSpent = document.getElementById('annualTotal');
 const pastTripsGrid = document.getElementById('pastTrips');
 const presentTripsGrid = document.getElementById('presentTrips');
