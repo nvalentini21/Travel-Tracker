@@ -9,11 +9,13 @@ class TravelRepository {
   }
 
    createNewTraveler(id) {
+     if (id > 50) {
+       return `ID invalid. Cannot find traveler.`
+     }
      const travelerData = this.travelers.find(traveler => traveler.id === id)
      const tripsData = this.trips.filter(trip => trip.userID === id)
      const newTraveler = new Traveler(travelerData, tripsData)
      this.currentTraveler = newTraveler;
-     console.log(this.currentTraveler)
    }
 }
 

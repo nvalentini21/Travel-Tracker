@@ -19,7 +19,7 @@ class Trip {
     const newDestination = new Destination(destinationData)
     this.destinationData = newDestination
   }
-  //
+
 
   calcTotalFlightCost() {
     const flightCost = this.destinationData.flightCostPerPerson
