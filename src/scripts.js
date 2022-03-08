@@ -48,7 +48,8 @@ const loadPage = () => {
     calculateAnnualCost(travelRepository)
     sortTravelerTripData(travelRepository)
     populateTravelerProfile(travelRepository)
-    populatePastTrips(travelRepository)
+    populateTrips(travelRepository, pastTripsGrid)
+
   })
 }
 
@@ -86,9 +87,9 @@ const createTripObject = () => {
     id: travelRepository.trips.length + 1,
     userID: travelRepository.currentTraveler.id,
     destinationID: getDestinationID(travelRepository),
-    travelers: numTravelersInput.value,
+    travelers: parseInt(numTravelersInput.value),
     date: dateInput.value.split('-').join('/'),
-    duration: durationInput.value,
+    duration: parseInt(durationInput.value),
     status: 'pending',
     suggestedActivities: []
   }
@@ -99,8 +100,6 @@ const postTripRequest = (e) => {
   e.preventDefault()
   const obj = createTripObject()
   fetchCalls.postData('http://localhost:3001/api/v1/trips', obj)
-  // .then(() => loadPage())
-
   setTimeout (loadPage, 3000)
 }
 //Traveler-----------------------------------------------------------------------------------
@@ -112,19 +111,15 @@ const calculateAnnualCost = (travelRepo) => {
 //DOM Updates ----------------------------------------------------------------------------------
 
 const populateTravelerProfile = (travelRepo) => {
-  annualTotalSpent.innerText = `You've spent $${travelRepo.currentTraveler.totalSpent} in 2022 so far.`
+  domUpdates.updateTravelerProfile(travelRepo, annualTotalSpent)
 }
 
-const populatePastTrips = (travelRepo) => {
-  pastTripsGrid.innerHTML = '';
+const populateTrips = (travelRepo, tripGrid) => {
+  tripGrid.innerHTML = '';
   travelRepo.currentTraveler.pastTrips.forEach(trip => {
-    pastTripsGrid.innerHTML += `<div class="trip-card">
-        <h4 class="card-title">${trip.destinationData.destination}</h4>
-        <img src="${trip.destinationData.image}" alt="${trip.destinationData.alt}" style="width:200px;height:auto;"</img>
-        <p class="card-year">${trip.date.getFullYear()} </p>
-      </div>`
-  })
+    domUpdates.populateTripSection(travelRepo, pastTripsGrid, trip)
 
+  })
 }
 
 
@@ -138,6 +133,9 @@ const numTravelersInput = document.getElementById('numberOfTravelers');
 const submitButton = document.getElementById('submitTravelRequest');
 const annualTotalSpent = document.getElementById('annualTotal');
 const pastTripsGrid = document.getElementById('pastTrips');
+const presentTripsGrid = document.getElementById('presentTrips');
+const futureTripsGrid = document.getElementById('futureTrips');
+const pendingTripsGrid = document.getElementById('pendingTrips');
 
 //Event Listeners -----------------------------------------------------------------------------
 
