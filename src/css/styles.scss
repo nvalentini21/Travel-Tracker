@@ -13,7 +13,7 @@ html {
 }
 
 nav {
-  height: 80px;
+  height: 130px;
   width: 100%;
   background-color: #c2c2d6;
   display: flex;
@@ -51,6 +51,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .traveler-stats {
@@ -64,22 +65,23 @@ body {
 }
 
 .greeting {
-  font-size: 25px;
+  font-size: 27px;
 }
 
 .find-next-trip{
   font-size: 20px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .trips-section {
-    // padding: 50px;
-  height: 1200px;
+  height: 1400px;
   width: 100%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  // background-color: #e0e0eb;
 }
 
 .trip-titles{
@@ -96,8 +98,8 @@ body {
   overflow: inherit;
   grid-gap: 20px;
   padding: 20px;
-  width: 100%;
-  border: solid 0.5px #f0f0f5;
+  width: 90%;
+  border-top: solid 2.0px #f0f0f5;
 
 }
 
