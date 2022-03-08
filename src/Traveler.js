@@ -54,14 +54,16 @@ class Traveler {
   // sortTripsPresent() {
   //   const presentTrips = this.allTrips.forEach(trip => {
   //     const date = new Date(trip.date)
+  //     const dateArray = date.split(' ')
   //     const today = new Date()
+  //     const todayArray = today.split(' ')
   //     if (date.getDay() === today.getDay()){
   //       this.presentTrips.push(trip)
   //     }
   //   })
   //   console.log(this.presentTrips)
   // }
-  //
+
 
   sortTripsFuture() {
     const futureTrips = this.allTrips.forEach(trip => {
