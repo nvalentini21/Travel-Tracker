@@ -20,13 +20,13 @@
       <form class="travel-form" id="travelForm">
         <div class="input-area">
           <label for="dateInput">Date:</label>
-          <input  class="travel-input" type="date" name="date" id="dateInput" required></input>
+          <input  class="travel-input" type="date" name="date" id="dateInput" min="" required></input>
           <label for="destinationInput">Destination:</label>
-          <input class="travel-input" type="tatom ext" name="destination" id="destinationInput" min="0" required></input>
+          <input class="travel-input" type="tatom ext" name="destination" id="destinationInput" placeholder="City, Country" required></input>
           <label for="numberOfDays">Duration:</label>
-          <input class="travel-input" type="number" name="duration" id="numberOfDays" min="0" required></input>
+          <input class="travel-input" type="number" name="duration" id="numberOfDays" value="City, Country" min="0" max="90" required></input>
           <label for="numberOfTravelers">Travelers:</label>
-          <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" required></input>
+          <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="0" max="10" required></input>
         </div>
         <div>
           <button class="button-submit" type="submit-travel-request" id="submitTravelRequest">Search</button>

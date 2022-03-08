@@ -43,6 +43,7 @@ let travelRepository = null
 const loadPage = () => {
   fetchData().then(allData => {
     travelRepository = new TravelRepository(allData)
+    setDateMinAttribute();
     travelRepository.createNewTraveler(9)
     instantiateTripData(travelRepository)
     calculateAnnualCost(travelRepository)
@@ -54,6 +55,11 @@ const loadPage = () => {
     // populateTrips(travelRepository, pastTripsGrid, 'pastTrips')
     // populateTrips(travelRepository, presentTripsGrid, 'presentTrips')
   })
+}
+
+const setDateMinAttribute = () => {
+  var today = new Date().toJSON().split('T')[0]
+  minDate.setAttribute('min', today)
 }
 
 const  handleApiErrors = (error) => {
@@ -153,6 +159,7 @@ const pastTripsGrid = document.getElementById('pastTrips');
 const presentTripsGrid = document.getElementById('presentTrips');
 const futureTripsGrid = document.getElementById('futureTrips');
 const pendingTripsGrid = document.getElementById('pendingTrips');
+const minDate = document.getElementById('dateInput')
 
 //Event Listeners -----------------------------------------------------------------------------
 
