@@ -15,7 +15,6 @@ describe('Traveler', () => {
     travelRepository = new TravelRepository(allData)
     traveler = new Traveler(allData.travelerData, allData.travelerTripsData);
 
-
   });
 
 
@@ -73,14 +72,15 @@ describe('Traveler', () => {
     expect(traveler.pendingTrips.length).to.eql(0)
   });
 
-  // it.skip('should be able to instantiate Trips from the trips data', function () {
-  //   traveler.instantiateTrips(traveler.allTrips)
-  //   console.log(traveler.allTrips)
-  //   expect(traveler.allTrips).to.eql(tripInstantiations);
-  // });
-  //
-  // it.skip('should be able to calculate the cost of the trip with a 10% fee', function () {
-  //   traveler.instantiateTrips(traveler.allTrips)
-  //   expect(traveler.calculateAnnualTotal()).to.eql();
-  // })
+  it('should be able to instantiate Trips from the trips data', function () {
+    traveler.instantiateTrips(travelRepository)
+    console.log(traveler.allTrips)
+    expect(traveler.allTrips[0].userID).to.eql(9);
+  });
+
+  it('should be able to calculate the annual total spent on trips with 10% fee', function () {
+    traveler.instantiateTrips(travelRepository)
+    traveler.calculateAnnualTotal()
+    expect(traveler.totalSpent).to.eql('29342.50');
+  })
 })
