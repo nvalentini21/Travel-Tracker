@@ -15,7 +15,7 @@ class Trip {
   };
 
   instantiateDestination(travelRepo) {
-    const destinationData = travelRepo.destinations.find(location => location.id === this.destinationID)
+    const destinationData = travelRepo.destinations.find(location => location.id === this.destinationID);
     const newDestination = new Destination(destinationData);
     this.destinationData = newDestination;
   };
@@ -24,7 +24,7 @@ class Trip {
   calcTotalFlightCost() {
     const flightCost = this.destinationData.flightCostPerPerson;
     const totalCost = flightCost * this.travelers;
-    return totalCost
+    return totalCost;
   };
 
   calcRoundTripCost() {

@@ -23,7 +23,6 @@ describe('Trip', () => {
   });
 
   it('should instantiate a Trip', function () {
-    console.log(trip)
     expect(trip).to.be.an.instanceof(Trip);
   });
 
@@ -49,7 +48,6 @@ describe('Trip', () => {
 
   it('should keep track of the trip duration', function () {
     expect(trip.duration).to.eql(allData.travelerTripsData[0].duration);
-    console.log(trip)
   });
 
   it('should keep track of the trip status', function () {

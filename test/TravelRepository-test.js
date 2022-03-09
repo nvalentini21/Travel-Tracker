@@ -14,7 +14,6 @@ describe('Travel Repository', () => {
 
   });
 
-
   it('should be a function', function () {
   expect(TravelRepository).to.be.a('function');
   });

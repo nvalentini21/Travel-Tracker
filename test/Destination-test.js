@@ -16,7 +16,6 @@ describe('Destination', () => {
   });
 
   it('should instantiate a Trip', function () {
-    console.log(destination)
     expect(destination).to.be.an.instanceof(Destination);
   });
 
@@ -43,4 +42,5 @@ describe('Destination', () => {
   it('should keep track of an alt text to use in place of the image', function () {
     expect(destination.alt).to.eql("overview of city buildings with a clear sky");
   });
+  
 });
