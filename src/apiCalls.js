@@ -17,7 +17,6 @@ const fetchCalls = {
     }
   })
   .then(response => {
-    console.log('RESPONSE>>>>>', response)
     if(!response.ok){
       throw new Error('Please select a date.')
     } else {
@@ -26,7 +25,6 @@ const fetchCalls = {
   })
   .then(data => console.log(data))
   .catch(err => {
-    console.log(err)
     dateError.classList.remove('hidden')
     dateError.innerText = err
     setTimeout (function() {
