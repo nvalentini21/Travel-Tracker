@@ -142,6 +142,20 @@ const postTripRequest = (e) => {
   }, 3000);
 };
 
+const getEstimate = (e) => {
+  e.preventDefault()
+  let obj = createTripObject()
+  const possibleTrip = new Trip(obj)
+  possibleTrip.instantiateDestination(travelRepository)
+  possibleTrip.calcTotalCost()
+  requestEstimateMessage.innerText = `Estimated cost with 10% agent fee: $${possibleTrip.cost}.00`
+  domUpdates.showElement(requestEstimateMessage)
+  setTimeout (function() {
+    domUpdates.hideElement(requestEstimateMessage)
+  }, 3000);
+}
+
+
 //Traveler-----------------------------------------------------------------------------------
 
 const calculateAnnualCost = (travelRepo) => {
@@ -205,6 +219,7 @@ const dateInput = document.getElementById('dateInput');
 const destinationInput = document.getElementById('destinationInput');
 const durationInput = document.getElementById('numberOfDays');
 const numTravelersInput = document.getElementById('numberOfTravelers');
+const getEstimateButton = document.getElementById('estimateTravelRequest');
 const submitButton = document.getElementById('submitTravelRequest');
 const destinationError = document.getElementById('destinationError');
 const dateError = document.getElementById('dateError');
@@ -215,7 +230,7 @@ const futureTripsGrid = document.getElementById('futureTrips');
 const pendingTripsGrid = document.getElementById('pendingTrips');
 const minDate = document.getElementById('dateInput')
 const confirmationMessage = document.getElementById('requestConfirmation');
-
+const requestEstimateMessage = document.getElementById('requestEstimate');
 //Event Listeners -----------------------------------------------------------------------------
 
 loginForm.addEventListener('submit', function (e) {
@@ -223,6 +238,10 @@ loginForm.addEventListener('submit', function (e) {
 })
 travelForm.addEventListener('submit', function (e) {
   postTripRequest(e);
+})
+
+getEstimateButton.addEventListener('click', function (e) {
+  getEstimate(e)
 })
 
 //Global Variable -----------------------------------------------------------------------------

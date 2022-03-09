@@ -42,6 +42,7 @@ class Trip {
     const cost = this.calcTotalFlightCost() + this.calcTotalLodgingCost();
     const costWithFee = cost + (cost * 0.10);
     this.cost = Math.round(costWithFee);
+    return parseInt(Math.round(costWithFee));
   };
 };
 
