@@ -1,7 +1,7 @@
 
 let domUpdates ={
   updateTravelerProfile: (travelRepo, element) => {
-    element.innerText = `You've spent $${travelRepo.currentTraveler.totalSpent} in 2022 so far.`
+    element.innerText = `You've spent $${travelRepo.currentTraveler.totalSpent} in 2022 so far.`;
   },
 
   populateTripSection: (travelRepo, element, trip) => {
@@ -22,11 +22,11 @@ let domUpdates ={
   },
 
   showElement: (element) => {
-    element.classList.remove('hidden')
+    element.classList.remove('hidden');
   },
 
   hideElement: (element) => {
-    element.classList.add('hidden')
+    element.classList.add('hidden');
   },
 
   updateDate: (element) => {
@@ -40,6 +40,6 @@ let domUpdates ={
   createDestinationList: (element, place) => {
     element.innerHTML += `<option value="${place}">${place}</option>`
   }
-}
+};
 
 export default domUpdates;
