@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>Webpack Starter Kit</title>
   </head>
   <body class="main-section">
@@ -12,16 +15,16 @@
       <p class="local-date" id="localDate"></p>
     </nav>
     <section class="login-page" id="loginPage">
-      <p> Please enter your username and password below:</p>
+      <p class="enter-info"> Please enter your username and password below:</p>
       <form class="login-form" id="loginForm">
         <div class="login-inputs" id="loginInput">
           <label for="userName">Username:</label>
           <input  class="login-input username-input" type="text" name="username" id="userName" placeholder="e.g. traveler50" required></input>
           <label for="password">Password:</label>
-          <input  class="login-input username-input" type="text" name="password" id="password" required></input>
+          <input  class="login-input username-input" type="password" name="password" id="password" required></input>
           <button class="button-enter" type="login-button" id="loginButton">Login</button>
       </div>
-      <p class="error-message hidden" id="loginErrorMessage">Your username/password is incorrect. Please try again</p>
+      <p class="error-message hidden" id="loginErrorMessage">Your username/password is incorrect. Please try again.</p>
       </form>
     </section>
     <main class="main-section hidden" id="mainPage">
@@ -61,9 +64,9 @@
         <article class="trips present-trips" id="presentTrips">
           <p class="empty-message">You have no current trips.</p>
         </article>
-        <h3 class="trip-titles"> Your Future Trips: </h3>
+        <h3 class="trip-titles"> Your Upcoming Trips: </h3>
         <article class="trips future-trips" id="futureTrips">
-          <p class="empty-message">You have no future trips.</p>
+          <p class="empty-message">You have no upcoming trips.</p>
         </article>
         <h3 class="trip-titles"> Your Pending Trips: </h3>
         <article class="trips pending-trips" id="pendingTrips">
@@ -74,7 +77,3 @@
     <script src="bundle.js"></script>
   </body>
 </html>
-
-
-
-<!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
