@@ -42,6 +42,8 @@ Via the login page, login with the following credentials:
 
  Successful login will take you to the main dashboard.
 
+ ![LoginPage](https://media.giphy.com/media/dzpHMMt2U5ttP2uC9E/giphy.gif)
+
 Currently, the Travel Tracker Dashboard displays all relevant trip information for a particular traveler:
 
 * Overall expenses for trips approved and past trips in 2022. This overall cost includes a 10% travel agent fee.
@@ -52,6 +54,8 @@ Currently, the Travel Tracker Dashboard displays all relevant trip information f
 ### Request A Trip Form:
 
 A traveler can make a trip request via the form provided on the dashboard. Date, Destination, duration, and number of travelers must be provided to make a request. Upon submission, a message will appear to signal that the request has been received. The requested trip will then how on the dashboard below.
+
+![Dashboard](https://media.giphy.com/media/iYA4pOX2guZzzmvTcv/giphy.gif)
 
 ---
 
@@ -76,5 +80,5 @@ In the future, we plan to:
 
 ---
 ## Credits
-* [*Turing School of Software and Design*](turing.edu)
+* [Turing School of Software and Design*](turing.edu)
 * My project manager, Scott Ertmer [@sertmer](https://github.com/sertmer)
