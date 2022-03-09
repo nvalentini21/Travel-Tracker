@@ -48,9 +48,11 @@
               <input class="travel-input" type="number" name="numberOfTravelers" id="numberOfTravelers" min="1" max="10" placeholder="# of travelers" required></input>
           </div>
           <div>
-            <button class="button-submit" type="submit-travel-request" id="submitTravelRequest">Search</button>
+            <button class="button-submit button-estimate" type="estimate-travel-request" id="estimateTravelRequest">Get estimate</button>
+            <button class="button-submit" type="submit-travel-request" id="submitTravelRequest">Submit Request</button>
           </div>
           <p class="request-confirmation hidden" id="requestConfirmation"> Request pending! See your pending trips below.</p>
+          <p class="request-confirmation hidden" id="requestEstimate"></p>
           <p class="request-confirmation hidden" id="destinationError"> Please select a destination.</p>
           <p class="request-confirmation hidden" id="dateError"></p>
         </form>
