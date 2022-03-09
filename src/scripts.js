@@ -148,11 +148,13 @@ const getEstimate = (e) => {
   const possibleTrip = new Trip(obj)
   possibleTrip.instantiateDestination(travelRepository)
   possibleTrip.calcTotalCost()
-  requestEstimateMessage.innerText = `Estimated cost with 10% agent fee: $${possibleTrip.cost}.00`
-  domUpdates.showElement(requestEstimateMessage)
-  setTimeout (function() {
-    domUpdates.hideElement(requestEstimateMessage)
-  }, 3000);
+  if (dateInput.value && numTravelersInput.value && durationInput){
+    requestEstimateMessage.innerText = `Estimated cost with 10% agent fee: $${possibleTrip.cost}.00`
+    domUpdates.showElement(requestEstimateMessage)
+    setTimeout (function() {
+      domUpdates.hideElement(requestEstimateMessage)
+    }, 4000);
+  }
 }
 
 
